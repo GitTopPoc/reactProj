@@ -1,8 +1,16 @@
 .header_links_block ul {
   display: flex;
 }
+.header_links_block ul li {
+  margin: 15px 0 0 144px;
+}
 .header_links_block ul li a {
   text-decoration: none;
+  color: black;
+  transition: 0.3s;
+}
+.header_links_block ul li a:hover {
+  color: #ff6900;
 }
 
 /*# sourceMappingURL=style.module.css.map */

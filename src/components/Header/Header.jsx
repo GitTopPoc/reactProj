@@ -8,10 +8,9 @@ const Header = () => {
         <div className={style.header_background}>
             <div className={`${ms.block_container} ${style.header_nav}`}>
                 <div className={style.header_logo}>
-                    <img width="50px" height="50px"
-                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Xiaomi_logo_%282021-%29.svg/768px-Xiaomi_logo_%282021-%29.svg.png"
-                         alt="logo"/>
-                    <p className={ms.regular_text}>Xiaomi</p>
+                    <a href="#"><img width="50px" height="50px"
+                                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Xiaomi_logo_%282021-%29.svg/768px-Xiaomi_logo_%282021-%29.svg.png"
+                                     alt="logo"/></a>
                 </div>
                 <Navbar/>
             </div>

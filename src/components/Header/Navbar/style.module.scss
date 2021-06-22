@@ -3,11 +3,16 @@
 .header_links_block {
   ul {
     display: flex;
-    
+
     li {
+      margin: 15px 0 0 144px;
       a {
         text-decoration: none;
-
+        color: black;
+        transition: .3s;
+        &:hover{
+          color: rgb(255, 105, 0);
+        }
       }
 
     }
