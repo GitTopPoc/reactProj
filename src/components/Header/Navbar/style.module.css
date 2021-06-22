@@ -1,0 +1,8 @@
+.header_links_block ul {
+  display: flex;
+}
+.header_links_block ul li a {
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=style.module.css.map */

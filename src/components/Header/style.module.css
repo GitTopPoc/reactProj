@@ -1,0 +1,19 @@
+.header_background {
+  background-color: #61dafb;
+  border-bottom: 5px solid rgba(113, 109, 109, 0.74);
+}
+
+.header_logo {
+  max-height: 50px;
+  max-width: 130px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header_nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+/*# sourceMappingURL=style.module.css.map */
