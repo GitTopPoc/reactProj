@@ -1,3 +1,35 @@
+.profile_picture {
+  max-height: 220px;
+  height: 200px;
+  width: 1200px;
+  background-image: url("https://www.worldphoto.org/sites/default/files/Christian%20Schipflinger%2C%20Austria%2C%20Commended%2C%20Open%2C%20Panoramic%2C%202015%20Sony%20World%20Photography%20Awards.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
 
+.profile_name {
+  color: aliceblue;
+  font-weight: 500;
+  font-size: 30px;
+}
+
+.profile_info {
+  background-color: rgba(141, 139, 139, 0.63);
+  max-width: 1000px;
+  width: 100%;
+  margin: 30px auto;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.profile_info_text {
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+}
 
 /*# sourceMappingURL=style.module.css.map */
