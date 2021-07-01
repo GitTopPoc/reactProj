@@ -3,14 +3,16 @@
 .header_links_block {
   ul {
     display: flex;
-
+    justify-content: space-around;
     li {
-      margin: 15px 0 0 144px;
+      margin: 15px 0 0 0;
+
       a {
         text-decoration: none;
         color: black;
         transition: .3s;
-        &:hover{
+
+        &:hover {
           color: rgb(255, 105, 0);
         }
       }
@@ -19,3 +21,11 @@
   }
 
 }
+
+
+ .active {
+   p {
+     color: rgb(255, 105, 0);
+   }
+ }
+

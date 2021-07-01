@@ -1,8 +1,9 @@
 .header_links_block ul {
   display: flex;
+  justify-content: space-around;
 }
 .header_links_block ul li {
-  margin: 15px 0 0 144px;
+  margin: 15px 0 0 0;
 }
 .header_links_block ul li a {
   text-decoration: none;
@@ -10,6 +11,10 @@
   transition: 0.3s;
 }
 .header_links_block ul li a:hover {
+  color: #ff6900;
+}
+
+.active p {
   color: #ff6900;
 }
 

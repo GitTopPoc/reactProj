@@ -1,0 +1,35 @@
+.creating_post {
+  max-width: 1000px;
+  margin: 0 auto 20px;
+}
+
+.my_posts_heading {
+  font-size: 26px;
+  color: antiquewhite;
+}
+
+.post_text {
+  margin: 20px 0;
+  border-radius: 10px;
+  resize: none;
+  max-width: 1000px;
+  width: 100%;
+  font-size: 20px;
+  max-height: 140px;
+  padding: 4px 14px;
+}
+
+.create_post_button {
+  width: 100px;
+  background-color: #696868;
+  padding: 4px 6px;
+  font-size: 20px;
+  color: antiquewhite;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+.create_post_button:hover {
+  background-color: #afb6bd;
+}
+
+/*# sourceMappingURL=style.module.css.map */

@@ -1,0 +1,36 @@
+// post
+
+.creating_post {
+  max-width: 1000px;
+  margin: 0 auto 20px;
+}
+.my_posts_heading {
+  font-size: 26px;
+  color: antiquewhite;
+}
+
+.post_text {
+  margin: 20px 0;
+  border-radius: 10px;
+  resize: none;
+  max-width: 1000px;
+  width: 100%;
+  font-size: 20px;
+  max-height: 140px;
+  padding: 4px 14px;
+}
+.create_post_button {
+  width: 100px;
+  background-color: rgb(105, 104, 104);
+  padding: 4px 6px;
+  font-size: 20px;
+  color: antiquewhite;
+  border-radius: 8px;
+  transition: .3s;
+  &:hover {
+    background-color: rgb(175, 182, 189);
+  }
+}
+
+
+

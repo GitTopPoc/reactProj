@@ -95,7 +95,9 @@ h6 {
 
 .block_container {
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 100%;
+  width: 1200px;
+  margin: 0 auto;
 }
 
 /*# sourceMappingURL=ms.module.css.map */
