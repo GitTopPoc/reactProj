@@ -13,7 +13,7 @@ const Content = () => {
                 <Route path='/profile' component={Profile}>
                     <Profile/>
                 </Route>
-                <Route exact path='/messages' component={Messages}>
+                <Route path='/messages' component={Messages}>
                     <Messages/>
                 </Route>
             </div>

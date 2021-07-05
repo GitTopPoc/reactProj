@@ -1,4 +1,3 @@
-// dialogs
 .dialog {
   font-size: 20px;
   padding: 10px;
@@ -8,18 +7,14 @@
 .dialog_wrapper {
   width: 100%;
   max-width: 200px;
-
-
-  &:hover {
-    cursor:pointer;
-    background-color: #696868;
-  }
+}
+.dialog_wrapper:hover {
+  cursor: pointer;
+  background-color: #696868;
 }
 
-.active {
-  .dialog {
-    background-color: rgb(97, 218, 251);
-  }
+.active .dialog {
+  background-color: #61dafb;
 }
 
 .dialog_name {
@@ -32,3 +27,5 @@
   width: 100%;
   border-right: solid 2px gray;
 }
+
+/*# sourceMappingURL=style.module.css.map */

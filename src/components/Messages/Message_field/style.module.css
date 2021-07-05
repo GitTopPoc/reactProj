@@ -1,10 +1,8 @@
-// message_field
-
-
 .input_field {
   width: 100%;
   padding: 10px;
 }
+
 .input_field_text {
   resize: none;
   font-size: 18px;
@@ -20,20 +18,20 @@
   width: 100%;
   font-size: 20px;
   margin-top: -1px;
-  background-color: rgb(97, 218, 251);
+  background-color: #61dafb;
   color: #fff;
   padding: 4px;
-  transition: .3s;
+  transition: 0.3s;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  &:hover {
-    background-color: rgb(135, 116, 225);
-    color: #66ff97;
-  }
-  &:active {
-    background-color: #66ff97;
-    color: white;
-  }
+}
+.button:hover {
+  background-color: #8774e1;
+  color: #66ff97;
+}
+.button:active {
+  background-color: #66ff97;
+  color: white;
 }
 
 .messages {
@@ -46,3 +44,5 @@
   padding: 6px;
   margin: 4px 0;
 }
+
+/*# sourceMappingURL=style.module.css.map */
