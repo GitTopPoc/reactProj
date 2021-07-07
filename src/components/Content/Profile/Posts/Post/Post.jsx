@@ -6,9 +6,9 @@ const Post = (props) => {
 
     let postsElements = props.posts.map(p => <PostElement id={p.id} message={p.message}/>);
     return (
-        <span>
+        <div className={style.posts_area}>
             {postsElements}
-        </span>
+        </div>
     )
 }
 
@@ -16,7 +16,7 @@ const Post = (props) => {
 const PostElement = (props) => {
     return (
         <div className={style.post}>
-            <div className={`${style.posts_area} ${style.post_author}`}>
+            <div className={style.post_author}>
                 <img
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Xiaomi_logo_%282021-%29.svg/768px-Xiaomi_logo_%282021-%29.svg.png"
                     alt="ava"/>
