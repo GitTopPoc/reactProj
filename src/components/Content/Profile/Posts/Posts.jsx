@@ -2,7 +2,7 @@ import React from "react";
 import style from "./style.module.css";
 import ms from "../../../Main_styles/ms.module.css";
 import Post from "./Post/Post";
-const Posts = () => {
+const Posts = (props) => {
     return (
         <div className={ms.block_container}>
             <div className={style.creating_post}>
@@ -15,7 +15,7 @@ const Posts = () => {
                           rows="10"/>
                 <button className={style.create_post_button}>Send</button>
             </div>
-            <Post/>
+            <Post posts={props.posts}/>
         </div>
     )
 }

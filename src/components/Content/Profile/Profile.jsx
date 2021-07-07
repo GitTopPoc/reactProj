@@ -4,7 +4,7 @@ import ms from '../../Main_styles/ms.module.css';
 import Posts from "./Posts/Posts";
 
 
-const Profile = () => {
+const Profile = (props) => {
     return (
         <div className={`${ms.block_container}`}>
             <div>
@@ -29,7 +29,7 @@ const Profile = () => {
                         </div>
                     </div>
 
-                    <Posts/>
+                    <Posts posts={props.posts}/>
                 </div>
             </div>
         </div>

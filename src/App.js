@@ -5,12 +5,12 @@ import Content from "./components/Content/Content";
 import ms from "./components/Main_styles/ms.module.css";
 import {BrowserRouter} from "react-router-dom";
 
-function App() {
+function App(props) {
     return (
         <BrowserRouter>
             <div>
                 <Header/>
-                <Content/>
+                <Content messageData={props.messageData} dialogsdata={props.dialogsData} posts={props.posts}/>
             </div>
         </BrowserRouter>
     )

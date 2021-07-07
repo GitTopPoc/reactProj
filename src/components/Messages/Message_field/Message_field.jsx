@@ -2,10 +2,10 @@ import React from "react";
 import style from "./style.module.css";
 import ms from "../../Main_styles/ms.module.css";
 
-const Message_field = () => {
+const Message_field = (props) => {
     return (
         <div className={`${ms.block_container} ${style.message_field}`}>
-            <Messages/>
+            <Messages messageData={props.messageData}/>
             <Input_field/>
         </div>
     )
@@ -23,12 +23,14 @@ const Input_field = () => {
     )
 }
 
-const Messages = () => {
+const Messages = (props) => {
+
+
+    let messages = props.messageData.map(m => <Message id={m.id} message={m.message}/>)
+
     return (
         <div className={style.messages}>
-            <Message message="heh"/>
-            <Message message="hi"/>
-            <Message message="hi"/>
+            {messages}
         </div>
     )
 }
