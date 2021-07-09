@@ -11,14 +11,20 @@ const Message_field = (props) => {
     )
 }
 export default Message_field;
-
+let sendMessageRef = React.createRef();
+let addMessage = () => {
+    let text = sendMessageRef.current.value;
+    alert(text);
+}
+debugger;
 const Input_field = () => {
     return (
         <div className={style.input_field}>
-            <textarea className={style.input_field_text} placeholder="Enter your message..." name="message_area"
+            <textarea ref={sendMessageRef} className={style.input_field_text} placeholder="Enter your message..."
+                      name="message_area"
                       id="message_area" cols="30" rows="10">
             </textarea>
-            <button className={style.button}>Send</button>
+            <button onClick={addMessage} className={style.button}>Send</button>
         </div>
     )
 }

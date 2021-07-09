@@ -10,8 +10,8 @@ const Content = (props) => {
     return (
         <div className={ms.block_container}>
             <div className={style.content_blocks}>
-                <Route path='/profile' render={() => <Profile posts={props.posts}/>}/>
-                <Route path='/messages' render={() => <Messages messageData={props.messageData} dialogsData={props.dialogsdata}/>}/>
+                <Route path='/profile' render={() => <Profile posts={props.state.profilePage.posts}/>}/>
+                <Route path='/messages' render={() => <Messages messages={props.state.messagePage}/>}/>
             </div>
         </div>
     )
