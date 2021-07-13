@@ -1,3 +1,4 @@
+
 let state = {
     profilePage: {
         posts: [
@@ -24,4 +25,18 @@ let state = {
         ]
     }
 }
+
+export const addPost = (messagePost) => {
+    let newPost = {
+        id:6,
+        message:messagePost
+    }
+    state.profilePage.posts.push(newPost);
+    renderEntireTree();
+}
+let renderEntireTree = () => {}
+export const subscribe = (observer) => {
+ renderEntireTree = observer;
+}
+
 export default state;
