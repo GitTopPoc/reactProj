@@ -8,8 +8,8 @@ const Messages = (props) => {
     return(
         <div className={ms.block_container}>
         <div className={style.message_wrapper}>
-            <Dialogs dialogsData={props.messages.dialogsData}/>
-            <Message_field messageData={props.messages.messageData}/>
+            <Dialogs dialogsData={props.store.messagePage.dialogsData}/>
+            <Message_field messageData={props.store.messagePage.messageData}/>
         </div>
         </div>
     )

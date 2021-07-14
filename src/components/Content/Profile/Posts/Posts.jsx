@@ -2,16 +2,18 @@ import React from "react";
 import style from "./style.module.css";
 import ms from "../../../Main_styles/ms.module.css";
 import Post from "./Post/Post";
-import {addPost} from "../../../../redux/state";
-let newPostElement = React.createRef();
-let addNewPost = () => {
-    let text = newPostElement.current.value;
-    newPostElement.current.value = '';
-    addPost(text);
+import {addPostAction} from "../../../../redux/state";
 
-}
 const Posts = (props) => {
+    let newPostElement = React.createRef();
+    let addNewPost = () => {
+        let text = newPostElement.current.value;
+        newPostElement.current.value = '';
+        let action = addPostAction(text);
+        props.dispatch(action);
+    }
     return (
+
         <div className={ms.block_container}>
             <div className={style.creating_post}>
                 <p className={style.my_posts_heading}>My Posts</p>
@@ -24,7 +26,7 @@ const Posts = (props) => {
                           rows="10"/>
                 <button onClick={addNewPost} className={style.create_post_button}>Send</button>
             </div>
-            <Post posts={props.posts}/>
+            <Post store={props.store}/>
         </div>
     )
 }

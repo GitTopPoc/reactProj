@@ -9,11 +9,10 @@ function App(props) {
         <BrowserRouter>
             <div>
                 <Header/>
-                <Content state={props.state}/>
+                <Content store={props.store} dispatch={props.dispatch}/>
             </div>
         </BrowserRouter>
     )
         ;
 }
-
 export default App;

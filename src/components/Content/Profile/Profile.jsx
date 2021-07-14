@@ -3,8 +3,7 @@ import style from './style.module.css';
 import ms from '../../Main_styles/ms.module.css';
 import Posts from "./Posts/Posts";
 
-
-const Profile = (props) => {
+ const Profile = (props) => {
     return (
         <div className={`${ms.block_container}`}>
             <div>
@@ -29,10 +28,12 @@ const Profile = (props) => {
                         </div>
                     </div>
 
-                    <Posts posts={props.posts} />
+                    <Posts store={props.store} dispatch={props.dispatch}/>
                 </div>
             </div>
         </div>
     )
 }
+
+
 export default Profile;

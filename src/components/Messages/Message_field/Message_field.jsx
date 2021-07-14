@@ -16,7 +16,6 @@ let addMessage = () => {
     let text = sendMessageRef.current.value;
     alert(text);
 }
-debugger;
 const Input_field = () => {
     return (
         <div className={style.input_field}>
