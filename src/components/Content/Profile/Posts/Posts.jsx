@@ -2,7 +2,7 @@ import React from "react";
 import style from "./style.module.css";
 import ms from "../../../Main_styles/ms.module.css";
 import Post from "./Post/Post";
-import {addPostAction} from "../../../../redux/state";
+import {addPostAction} from "../../../../redux/store";
 
 const Posts = (props) => {
     let newPostElement = React.createRef();

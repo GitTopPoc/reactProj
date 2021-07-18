@@ -11,7 +11,7 @@ const Content = (props) => {
         <div className={ms.block_container}>
             <div className={style.content_blocks}>
                 <Route path='/profile' render={() => <Profile store={props.store} dispatch={props.dispatch}/>}/>
-                <Route path='/messages' render={() => <Messages store={props.store}/>}/>
+                <Route path='/messages' render={() => <Messages store={props.store} dispatch={props.dispatch}/>}/>
             </div>
         </div>
     )

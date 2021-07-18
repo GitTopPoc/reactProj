@@ -1,4 +1,9 @@
+import profileReducer from "./profile-reducer";
+import messagesReducer from "./messages-reducer";
+
+
 const ADD_POST = 'ADD-POST';
+const ADD_MESSAGE = 'ADD-MESSAGE';
 
 
 let store = {
@@ -7,7 +12,7 @@ let store = {
             posts: [
                 {id: 1, message: 'Hey there'},
                 {id: 2, message: 'Hello'},
-                {id: 3, message: 'Zdarova'},
+                {id: 3, message: 'Hi'},
                 {id: 4, message: 'Privet'},
                 {id: 5, message: 'Message'},
             ]
@@ -15,9 +20,9 @@ let store = {
         messagePage: {
             messageData: [
                 {id: 1, message: 'Hey'},
-                {id: 1, message: 'Ew'},
-                {id: 1, message: 'OOO'},
-                {id: 1, message: 'XXX'}
+                {id: 2, message: 'Ew'},
+                {id: 3, message: 'OOO'},
+                {id: 4, message: 'XXX'}
             ],
             dialogsData: [
                 {id: 1, name: 'User1'},
@@ -28,33 +33,22 @@ let store = {
             ]
         }
     },
-    getState() {return this._state;},
-    renderEntireTree() {},
+    getState() {
+        return this._state;
+    },
+    renderEntireTree() {
+    },
     subscribe(observer) {
         this.renderEntireTree = observer;
     },
     dispatch(action) {
-        switch (action.type) {
-            case 'ADD-POST':
-                let newPost = {
-                    id: 6,
-                    message: action.text
-                }
-                this._state.profilePage.posts.push(newPost);
-                this.renderEntireTree();
-                break;
-            case 'ACTION':
-                console.log('case work');
-                break;
-            default:
-                console.log('not found case');
-                break;
-        }
-
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.messagePage = messagesReducer(this._state.messagePage, action);
+        this.renderEntireTree();
 
     }
 
 }
 export const addPostAction = (text) => ({type: ADD_POST, text: text});
-
+export const addMessageAction = (text) => ({type: ADD_MESSAGE, text: text});
 export default store;

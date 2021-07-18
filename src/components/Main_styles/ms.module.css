@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*NULLSTYLE*/
 * {
   padding: 0;
@@ -97,7 +98,39 @@ h6 {
   margin: 0 auto;
   max-width: 100%;
   width: 1200px;
-  margin: 0 auto;
+}
+
+::-webkit-scrollbar {
+  /* 1 - скроллбар */
+  width: 8px;
+  height: 4px;
+  background-color: #2b2b2b;
+}
+
+::-webkit-scrollbar-button {
+  /* 2 - кнопка */
+}
+
+::-webkit-scrollbar-track {
+  /* 3 - трек */
+}
+
+::-webkit-scrollbar-track-piece {
+  /* 4 - видимая часть трека */
+}
+
+::-webkit-scrollbar-thumb {
+  /* 5 - ползунок */
+  border-radius: 2px;
+  background-color: #d1d1d1;
+}
+
+::-webkit-scrollbar-corner {
+  /* 6 - уголок */
+}
+
+::-webkit-resizer {
+  /* 7 - изменение размеров */
 }
 
 /*# sourceMappingURL=ms.module.css.map */

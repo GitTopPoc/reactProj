@@ -9,7 +9,7 @@ const Messages = (props) => {
         <div className={ms.block_container}>
         <div className={style.message_wrapper}>
             <Dialogs dialogsData={props.store.messagePage.dialogsData}/>
-            <Message_field messageData={props.store.messagePage.messageData}/>
+            <Message_field messageData={props.store.messagePage.messageData} dispatch={props.dispatch}/>
         </div>
         </div>
     )

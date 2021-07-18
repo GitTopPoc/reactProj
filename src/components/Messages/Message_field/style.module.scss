@@ -38,6 +38,8 @@
 
 .messages {
   padding: 10px;
+  height: 400px;
+  overflow-y: scroll;
 }
 
 .message {
@@ -46,3 +48,4 @@
   padding: 6px;
   margin: 4px 0;
 }
+
