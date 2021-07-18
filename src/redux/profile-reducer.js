@@ -19,13 +19,11 @@ const profileReducer = (state = initialState, action) => {
                 message: action.text
             }
             state.posts.push(newPost);
-            break;
+            return state;
         default:
-            console.log('profileReducer');
-            break;
+            return state;
     }
 
-    return state;
 
 };
 export const addPostAction = (text) => ({type: ADD_POST, text: text});

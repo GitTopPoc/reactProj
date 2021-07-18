@@ -6,7 +6,7 @@ import {NavLink} from "react-router-dom";
 const Dialogs = (props) => {
 
 
-    let dialogs = props.dialogsData.map(d => <Dialog_item id={d.id} name={d.name}/>)
+    let dialogs = props.dialogsData.map(d => <DialogItem id={d.id} name={d.name}/>)
     return (
         <div className={`${style.dialogs_list} ${ms.block_container}`}>
             {dialogs}
@@ -14,7 +14,7 @@ const Dialogs = (props) => {
     )
 }
 
-const Dialog_item = (props) => {
+const DialogItem = (props) => {
     let path = "/messages/" + props.id;
     return (
         <NavLink activeClassName={style.active} to={path}>

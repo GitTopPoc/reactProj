@@ -26,12 +26,11 @@ const messagesReducer = (state = initialState, action) => {
                 message: action.text
             }
             state.messageData.push(newMessage);
-            break;
+            return state;
         default:
-            console.log('messagesReducer');
-            break;
+
+            return state;
     }
-    return state;
 };
 export const addMessageAction = (text) => ({type: ADD_MESSAGE, text: text});
 
