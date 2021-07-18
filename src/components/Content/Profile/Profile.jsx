@@ -1,7 +1,7 @@
 import React from "react";
 import style from './style.module.css';
 import ms from '../../Main_styles/ms.module.css';
-import Posts from "./Posts/Posts";
+import PostsContainer from "./Posts/PostsContainer";
 
  const Profile = (props) => {
     return (
@@ -28,7 +28,7 @@ import Posts from "./Posts/Posts";
                         </div>
                     </div>
 
-                    <Posts store={props.store} dispatch={props.dispatch}/>
+                    <PostsContainer store={props.store} dispatch={props.dispatch}/>
                 </div>
             </div>
         </div>

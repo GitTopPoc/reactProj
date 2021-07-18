@@ -2,8 +2,6 @@ import profileReducer from "./profile-reducer";
 import messagesReducer from "./messages-reducer";
 
 
-const ADD_POST = 'ADD-POST';
-const ADD_MESSAGE = 'ADD-MESSAGE';
 
 
 let store = {
@@ -49,6 +47,4 @@ let store = {
     }
 
 }
-export const addPostAction = (text) => ({type: ADD_POST, text: text});
-export const addMessageAction = (text) => ({type: ADD_MESSAGE, text: text});
 export default store;

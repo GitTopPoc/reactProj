@@ -4,7 +4,7 @@ import ms from "../../../../Main_styles/ms.module.css";
 
 const Post = (props) => {
 
-    let postsElements = props.store.profilePage.posts.map(p => <PostElement id={p.id} message={p.message}/>);
+    let postsElements = props.profilePage.posts.map(p => <PostElement id={p.id} message={p.message}/>);
     return (
         <div className={style.posts_area}>
             {postsElements}

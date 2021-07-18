@@ -2,15 +2,15 @@ import React from "react";
 import style from "./style.module.css";
 import ms from "../../../Main_styles/ms.module.css";
 import Post from "./Post/Post";
-import {addPostAction} from "../../../../redux/store";
 
 const Posts = (props) => {
+
     let newPostElement = React.createRef();
+
     let addNewPost = () => {
         let text = newPostElement.current.value;
         newPostElement.current.value = '';
-        let action = addPostAction(text);
-        props.dispatch(action);
+        props.addPost(text);
     }
     return (
 
@@ -26,7 +26,7 @@ const Posts = (props) => {
                           rows="10"/>
                 <button onClick={addNewPost} className={style.create_post_button}>Send</button>
             </div>
-            <Post store={props.store}/>
+            <Post store={props.store} profilePage={props.profilePage}/>
         </div>
     )
 }

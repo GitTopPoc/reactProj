@@ -1,3 +1,4 @@
+const ADD_POST = 'ADD-POST';
 
 let initialState = {
     posts: [
@@ -27,5 +28,6 @@ const profileReducer = (state = initialState, action) => {
     return state;
 
 };
+export const addPostAction = (text) => ({type: ADD_POST, text: text});
 
 export default profileReducer;
