@@ -4,7 +4,6 @@ import ms from "../../Main_styles/ms.module.css";
 
 const MessageField = (props) => {
     let sendMessageRef = React.createRef();
-
     let onAddMessage = () => {
         let text = sendMessageRef.current.value;
         sendMessageRef.current.value = '';
@@ -21,8 +20,7 @@ const MessageField = (props) => {
                 </div>
             )
         }
-
-        let messages = props.messageData.map(m => <Message id={m.id} message={m.message}/>)
+        let messages = props.messageData().map(m => <Message id={m.id} message={m.message}/>)
 
         return (
             <div className={style.messages}>

@@ -25,8 +25,10 @@ const messagesReducer = (state = initialState, action) => {
                 id: newId,
                 message: action.text
             }
-            state.messageData.push(newMessage);
-            return state;
+            let stateCopy = {...state};
+            stateCopy.messageData = [...state.messageData];
+            stateCopy.messageData.push(newMessage);
+            return stateCopy;
         default:
 
             return state;

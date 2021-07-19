@@ -18,8 +18,10 @@ const profileReducer = (state = initialState, action) => {
                 id: newId,
                 message: action.text
             }
-            state.posts.push(newPost);
-            return state;
+            let stateCopy = {...state};
+            stateCopy.posts= [...state.posts];
+            stateCopy.posts.push(newPost);
+            return stateCopy;
         default:
             return state;
     }

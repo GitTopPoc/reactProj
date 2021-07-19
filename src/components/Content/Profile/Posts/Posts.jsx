@@ -7,6 +7,7 @@ const Posts = (props) => {
 
     let newPostElement = React.createRef();
 
+
     let addNewPost = () => {
         let text = newPostElement.current.value;
         newPostElement.current.value = '';
@@ -26,7 +27,8 @@ const Posts = (props) => {
                           rows="10"/>
                 <button onClick={addNewPost} className={style.create_post_button}>Send</button>
             </div>
-            <Post store={props.store} profilePage={props.profilePage}/>
+
+            <Post profilePage={props.profilePage}/>
         </div>
     )
 }
