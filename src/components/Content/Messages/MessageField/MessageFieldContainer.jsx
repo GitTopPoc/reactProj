@@ -1,4 +1,4 @@
-import {addMessageAction} from "../../../redux/messages-reducer";
+import {addMessageAction} from "../../../../redux/messages-reducer";
 import MessageField from "./MessageField";
 import {connect} from "react-redux";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./style.module.css";
-import ms from "../../Main_styles/ms.module.css";
+import ms from "../../../Main_styles/ms.module.css";
 import {NavLink} from "react-router-dom";
 
 const Dialogs = (props) => {

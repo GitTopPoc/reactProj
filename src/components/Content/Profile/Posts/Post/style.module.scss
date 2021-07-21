@@ -12,6 +12,7 @@
   width: 100%;
   margin: 20px auto;
   padding: 10px;
+  box-shadow: 0 .6rem 1rem #00000080;
 }
 
 .posts_area {
@@ -30,4 +31,8 @@
   font-size: 20px;
   max-height: 140px;
   padding: 4px 14px;
+}
+
+.profile_photo {
+  border-radius: 50%;
 }

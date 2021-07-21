@@ -3,14 +3,14 @@ import style from './style.module.css';
 import ms from '../Main_styles/ms.module.css';
 import Navbar from "./Navbar/Navbar";
 import {NavLink} from "react-router-dom";
-
+import logo from "../../assets/image/logo.png";
 const Header = () => {
     return (
         <div className={style.header_background}>
             <div className={`${ms.block_container} ${style.header_nav}`}>
                 <div className={style.header_logo}>
-                    <NavLink to="/profile" href="#"><img width="50px" height="50px"
-                                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Xiaomi_logo_%282021-%29.svg/768px-Xiaomi_logo_%282021-%29.svg.png"
+                    <NavLink to="/profile" href="#"><img width="80px" height="50px"
+                                     src={logo}
                                      alt="logo"/></NavLink>
                 </div>
                 <Navbar/>

@@ -33,6 +33,7 @@
 }
 
 .profile_info {
+  box-shadow: 0 1rem 1rem #00000080;
   background-color: rgba(141, 139, 139, 0.63);
   margin: 30px auto;
   max-width: 1000px;

@@ -1,6 +1,6 @@
 import React from "react";
 import style from './style.module.css';
-import ms from '../Main_styles/ms.module.css';
+import ms from '../../Main_styles/ms.module.css';
 import Dialogs from "./Dialogs/Dialogs";
 import MessageFieldContainer from "./MessageField/MessageFieldContainer";
 
