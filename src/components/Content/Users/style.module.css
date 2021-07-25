@@ -1,5 +1,3 @@
-// USERS
-
 .user_block {
   width: 332px;
   background-color: #c7c2c2;
@@ -24,37 +22,33 @@
 
 .user_block_follow_block {
   margin: 5px auto;
-
 }
 
 .user_block_follow_button {
   width: 100%;
   padding: 4px;
   border-radius: 6px;
-  box-shadow: 0 .3rem .5rem #00000080;
+  box-shadow: 0 0.3rem 0.5rem #00000080;
 }
 
 .user_block_follow {
-  background-color: rgb(97, 218, 251);
-  transition: .3s;
-
-  &:hover {
-    background-color: rgb(135, 116, 225);
-    color: rgb(104, 255, 151);
-  }
+  background-color: #61dafb;
+  transition: 0.3s;
+}
+.user_block_follow:hover {
+  background-color: #8774e1;
+  color: #68ff97;
 }
 
 .user_block_unfollow {
-  background-color: rgb(255, 6, 85);
+  background-color: #ff0655;
   color: #fff;
-  transition: .3s;
-
-  &:hover {
-    background-color: rgb(101, 87, 71);
-    color: black;
-  }
+  transition: 0.3s;
 }
-
+.user_block_unfollow:hover {
+  background-color: #655747;
+  color: black;
+}
 
 .user_info_block {
   padding: 10px;
@@ -68,7 +62,6 @@
 
 .user_info_status {
   margin: 20px auto;
-
 }
 
 .pagination_block {
@@ -79,7 +72,7 @@
 
 .page_button {
   color: #fff;
-  background-color: rgb(97, 218, 251);
+  background-color: #61dafb;
   width: 40px;
   height: 40px;
   text-align: center;
@@ -87,13 +80,12 @@
   margin: 4px;
   font-size: 20px;
   border-radius: 50%;
-  transition: .3s;
+  transition: 0.3s;
   user-select: none;
-
-  &:hover {
-    cursor: pointer;
-    background-color: rgb(135, 116, 225);
-  }
+}
+.page_button:hover {
+  cursor: pointer;
+  background-color: #8774e1;
 }
 
 .pagination_start {
@@ -103,3 +95,5 @@
 .active_page {
   background-color: orange;
 }
+
+/*# sourceMappingURL=style.module.css.map */

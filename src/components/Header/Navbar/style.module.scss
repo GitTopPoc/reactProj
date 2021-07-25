@@ -1,11 +1,12 @@
 // navbar
 
 .header_links_block {
+  margin: 16px auto;
   ul {
     display: flex;
     justify-content: space-around;
     li {
-      margin: 15px 0 0 0;
+      text-align: center;
 
       a {
         text-decoration: none;

@@ -13,7 +13,7 @@ import PostsContainer from "./Posts/PostsContainer";
                     </div>
 
                     <div className={style.profile_name}>
-                        <p className={`${ms.regular_text} ${style.profile_name}`}>Ava+Name</p>
+                        <p className={`${ms.regular_text} ${style.profile_name}`}>Ava+name</p>
                     </div>
                 </div>
                 <div className={style.profile}>

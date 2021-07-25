@@ -9,6 +9,7 @@ const Navbar = () => {
                <ul>
                    <li><NavLink activeClassName={style.active} to="/profile"><p className={ms.regular_text}>Profile</p></NavLink></li>
                    <li><NavLink activeClassName={style.active} to="/messages"><p className={ms.regular_text}>Messages</p></NavLink></li>
+                   <li><NavLink activeClassName={style.active} to="/users"><p className={ms.regular_text}>Users</p></NavLink></li>
                    <li><NavLink activeClassName={style.active} to="/News"><p className={ms.regular_text}>News</p></NavLink></li>
                    <li><NavLink activeClassName={style.active} to="/Music"><p className={ms.regular_text}>Music</p></NavLink></li>
                    <li><NavLink activeClassName={style.active} to="/Settings"><p className={ms.regular_text}>Settings</p></NavLink></li>
