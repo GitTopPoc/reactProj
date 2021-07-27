@@ -24,13 +24,29 @@
     position: absolute;
   }
 }
-.profile_name {
+.profile_main_info{
   bottom: 20px;
-  left: 20px;
+  left: 60px;
   position: absolute;
-  color: aliceblue;
-  font-weight: 500;
-  font-size: 30px;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+.profile_photo {
+  border-radius: 50%;
+  width: 180px;
+}
+
+.profile_name_text {
+  font-size: 38px;
+  font-weight: 600;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(73, 72, 72, 0.6);
+  max-width: 430px;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .profile_info {
@@ -43,8 +59,8 @@
   border-radius: 10px;
   display: flex;
   flex-wrap: wrap;
-  text-align: left;
-  justify-content: space-between;
+  justify-content: space-around;
+  text-align: center;
 }
 
 .profile_info_text {

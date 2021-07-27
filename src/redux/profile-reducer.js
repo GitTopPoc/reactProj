@@ -1,4 +1,5 @@
 const ADD_POST = 'ADD-POST';
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 let initialState = {
     posts: [
@@ -7,13 +8,14 @@ let initialState = {
         {id: 3, message: 'Hi'},
         {id: 4, message: 'Privet'},
         {id: 5, message: 'Message'},
-    ]
+    ],
+    profile:null
 }
 
 const profileReducer = (state = initialState, action) => {
     let newId = state.posts.length + 1;
     switch (action.type) {
-        case 'ADD-POST':
+        case ADD_POST:
             let newPost = {
                 id: newId,
                 message: action.text
@@ -22,6 +24,9 @@ const profileReducer = (state = initialState, action) => {
             stateCopy.posts = [...state.posts];
             stateCopy.posts.push(newPost);
             return stateCopy;
+        case SET_USER_PROFILE : {
+            return {...state, profile: action.text}
+        }
         default:
             return state;
     }
@@ -29,5 +34,6 @@ const profileReducer = (state = initialState, action) => {
 
 };
 export const addPostAction = (text) => ({type: ADD_POST, text: text});
+export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, text: profile});
 
 export default profileReducer;

@@ -13,9 +13,7 @@ class Posts extends React.Component {
             newPostElement.current.value = '';
             this.props.addPost(text);
         }
-
         return (
-
             <div className={ms.block_container}>
                 <div className={style.creating_post}>
                     <p className={style.my_posts_heading}>My Posts</p>
@@ -29,7 +27,7 @@ class Posts extends React.Component {
                     <button onClick={addNewPost} className={style.create_post_button}>Send</button>
                 </div>
 
-                <Post profilePage={this.props.profilePage}/>
+                <Post profilePage={this.props.profilePage} profile={this.props.profile}/>
             </div>
         )
     }

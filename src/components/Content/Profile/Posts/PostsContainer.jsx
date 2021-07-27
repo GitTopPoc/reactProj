@@ -12,13 +12,10 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-let mapStateToProps = (state) => {
-    return {
-        profilePage: () => {
+let mapStateToProps = (state) => ({
+    profilePage : state.profilePage,
+    profile : state.profilePage.profile
 
-            return state.profilePage;
-        }
-    }
-}
+});
 const PostsContainer = connect(mapStateToProps, mapDispatchToProps)(Posts)
 export default PostsContainer;

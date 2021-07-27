@@ -3,6 +3,7 @@ import style from "./style.module.css";
 import ms from "../../Main_styles/ms.module.css";
 import userPhoto from "../../../assets/image/default-image.jpg";
 import Preloader from "../../common/Preloader/Preloader";
+import {NavLink} from "react-router-dom";
 
 const Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
@@ -52,9 +53,12 @@ const Users = (props) => {
                 {
                     props.users.map(u => <div className={style.user_block} key={u.id}>
                             <div>
-                                {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-                                <img className={style.user_photo} src={u.photos.small != null ? u.photos.small : userPhoto}
-                                     alt="no image"/>
+
+                              <NavLink to={'/profile/'+ u.id}>
+                                  {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
+                                  <img className={style.user_photo} src={u.photos.small != null ? u.photos.small : userPhoto}
+                                       alt="no image"/>
+                              </NavLink>
                                 <div className={style.user_block_follow_block}>
                                     {
                                         u.followed ?
@@ -69,7 +73,9 @@ const Users = (props) => {
                             </div>
                             <div className={style.user_info_block}>
                                 <div>
-                                    <p className={`${style.user_info_name}`}>{u.name}</p>
+                                    <NavLink to={'/profile/'+ u.id}>
+                                        <p className={`${style.user_info_name}`}>{u.name}</p>
+                                    </NavLink>
                                     <p className={style.user_info_status}>{u.status ? u.status : 'No status yet...'}</p>
                                 </div>
                             </div>
