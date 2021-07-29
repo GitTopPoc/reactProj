@@ -7,7 +7,7 @@ import {BrowserRouter} from "react-router-dom";
 function App(props) {
     return (
         <BrowserRouter>
-                <Header/>
+                <Header store={props.store} dispatch={props.dispatch}/>
                 <Content store={props.store} dispatch={props.dispatch}/>
         </BrowserRouter>
     )

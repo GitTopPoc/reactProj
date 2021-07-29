@@ -7,14 +7,17 @@ import UsersContainer from "./Users/UsersContainer";
 import ProfileContainer from "./Profile/ProfileContainer";
 
 
+
 const Content = (props) => {
     return (
         <div className={ms.block_container}>
+
             <div className={style.content_blocks}>
-                <Route path='/profile' render={() => <ProfileContainer store={props.store} dispatch={props.dispatch}/>}/>
+                <Route path='/profile/:userId' render={() => <ProfileContainer store={props.store} dispatch={props.dispatch}/>}/>
                 <Route path='/messages' render={() => <Messages store={props.store} dispatch={props.dispatch}/>}/>
                 <Route path='/users' render={()=> <UsersContainer store={props.store} dispatch={props.dispatch}/>}/>
             </div>
+
         </div>
     )
 }
