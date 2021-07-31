@@ -106,5 +106,12 @@ export const unfollow = (userId) => {
     }
 }
 
+export const changeCurrentPage = (pageNumber) => {
+    return (dispatch) => {
+        dispatch(setCurrentPage(pageNumber));
+    }
+}
+
+
 
 export default usersReducer;
