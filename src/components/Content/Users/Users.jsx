@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./style.module.css";
-import ms from "../../Main_styles/ms.module.css";
+import ms from "../../../mainStyles/ms.module.css";
 import userPhoto from "../../../assets/image/default-image.jpg";
 import Preloader from "../../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";

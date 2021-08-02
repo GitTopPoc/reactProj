@@ -1,12 +1,14 @@
 import React from "react";
 import style from './style.module.css';
-import ms from '../../Main_styles/ms.module.css';
+import ms from '../../../mainStyles/ms.module.css';
 import PostsContainer from "./Posts/PostsContainer";
 import Preloader from "../../common/Preloader/Preloader";
 import userPhoto from '../../../assets/image/default-image.jpg'
+import ProfileStatus from "./ProfileStatus";
 
  const Profile = (props) => {
      if (!props.profile) {
+         debugger;
          return <Preloader/>
      }
 
@@ -26,14 +28,16 @@ import userPhoto from '../../../assets/image/default-image.jpg'
                     </div>
                 </div>
                 <div className={style.profile}>
-                    <p className={`${ms.regular_text} ${style.profile_name_text}`}>{props.profile.fullName}</p>
-                    <div className={style.profile_info}>
-                        <div>
-                            <p className={style.profile_info_text}>About me: {!props.profile.aboutMe ? 'No status' : props.profile.aboutMe}</p>
+                    <div className={style.name_status_block}>
+                        <p className={`${ms.regular_text} ${style.profile_name_text}`}>{props.profile.fullName}</p>
+                        <ProfileStatus status={props.profile.aboutMe}/>
+                    </div>
+                    <div className={style.info_blocks}>
+                        <div className={style.profile_info}>
                             <p className={style.profile_info_text}>Job description: {!props.profile.lookingForAJobDescription ? 'No description' : props.profile.lookingForAJobDescription}</p>
                             <p className={style.profile_info_text}>Looking for a job: {props.profile.lookingForAJob ? 'Yes': 'No'}</p>
                         </div>
-                        <div>
+                        <div className={style.profile_info}>
                             <p className={style.profile_info_text}>Instagram: {!props.profile.contacts.instagram ? 'No instagram' : props.profile.contacts.instagram}</p>
                             <p className={style.profile_info_text}>Facebook: {!props.profile.contacts.facebook ? 'No facebook' : props.profile.contacts.instagram}</p>
                             <p className={style.profile_info_text}>Twitter: {!props.profile.contacts.twitter ? 'No twitter' : props.profile.contacts.twitter}</p>

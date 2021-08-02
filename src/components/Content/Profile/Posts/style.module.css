@@ -6,12 +6,14 @@
 .my_posts_heading {
   font-size: 26px;
   color: antiquewhite;
+  text-align: center;
 }
 
 .post_text {
   box-shadow: 0 2rem 2rem #00000080;
-  margin: 20px 0;
-  border-radius: 10px;
+  margin: 20px 0 -2px 0;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
   resize: none;
   max-width: 1000px;
   width: 100%;
@@ -21,16 +23,17 @@
 }
 
 .create_post_button {
-  width: 100px;
-  background-color: #696868;
+  width: 100%;
   padding: 4px 6px;
   font-size: 20px;
-  color: antiquewhite;
-  border-radius: 8px;
+  background-color: #61dafb;
   transition: 0.3s;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 .create_post_button:hover {
-  background-color: #afb6bd;
+  background-color: #8774e1;
+  color: #68ff97;
 }
 
 /*# sourceMappingURL=style.module.css.map */

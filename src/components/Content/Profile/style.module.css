@@ -39,11 +39,6 @@
 .profile_name_text {
   font-size: 38px;
   font-weight: 600;
-  color: #fff;
-  padding: 10px;
-  border-radius: 10px;
-  background-color: rgba(73, 72, 72, 0.6);
-  max-width: 430px;
   text-align: center;
   margin: 0 auto;
 }
@@ -51,15 +46,18 @@
 .profile_info {
   box-shadow: 0 1rem 1rem #00000080;
   background-color: rgba(141, 139, 139, 0.63);
-  margin: 30px auto;
-  max-width: 1000px;
-  width: 100%;
+  margin: 24px 10px;
   padding: 15px;
   border-radius: 10px;
+  max-width: 50%;
+  width: 400px;
+  text-align: center;
+}
+
+.info_blocks {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  text-align: center;
 }
 
 .profile_info_text {
@@ -69,8 +67,26 @@
   line-height: 30px;
 }
 
+.status_input {
+  color: black;
+  border-radius: 4px;
+  padding-left: 4px;
+  font-size: 20px;
+  width: 100%;
+}
+
 .profile {
   padding: 15px;
+}
+
+.name_status_block {
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(73, 72, 72, 0.6);
+  max-width: 430px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.module.css.map */

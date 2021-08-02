@@ -6,9 +6,10 @@ import {
     toggleFollowing,
     unfollow
 } from "../../../redux/users-reducer";
-import {withRouter} from "react-router-dom";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import React from "react";
 import Users from "./Users";
+import {compose} from "redux";
 
 
 class UsersContainer extends React.Component {
@@ -46,11 +47,12 @@ let mapStateToProps = (state) => {
     }
 }
 
-let WithUrlDataContainerComponent = withRouter(UsersContainer)
-export default connect(mapStateToProps, {
-    changeCurrentPage,
-    toggleFollowing,
-    getUsers,
-    follow,
-    unfollow
-})(WithUrlDataContainerComponent);
+export default compose (
+    withAuthRedirect,
+    connect(mapStateToProps, {
+        changeCurrentPage,
+        toggleFollowing,
+        getUsers,
+        follow,
+        unfollow
+    })) (UsersContainer)

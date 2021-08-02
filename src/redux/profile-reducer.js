@@ -1,6 +1,6 @@
 import {profileAPI} from "../api/api";
 
-const ADD_POST = 'ADD-POST';
+const ADD_POST = 'ADD_POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 let initialState = {
@@ -11,7 +11,8 @@ let initialState = {
         {id: 4, message: 'Privet'},
         {id: 5, message: 'Message'},
     ],
-    profile:null
+    profile:null,
+    newStatus: 'AA'
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -35,13 +36,12 @@ const profileReducer = (state = initialState, action) => {
 
 
 };
-export const addPostAction = (text) => ({type: ADD_POST, text: text});
+export const addPost = (text) => ({type: ADD_POST, text: text});
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, text: profile});
 
 export const getMyProfile = (userId) => {
     return (dispatch) => {
         profileAPI.getProfile(userId).then(data => {
-            debugger;
             dispatch(setUserProfile(data));
         })
     }

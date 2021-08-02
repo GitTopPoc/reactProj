@@ -4,15 +4,18 @@
   max-width: 1000px;
   margin: 0 auto 20px;
 }
+
 .my_posts_heading {
   font-size: 26px;
   color: antiquewhite;
+  text-align: center;
 }
 
 .post_text {
   box-shadow: 0 2rem 2rem #00000080;
-  margin: 20px 0;
-  border-radius: 10px;
+  margin: 20px 0 -2px 0;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
   resize: none;
   max-width: 1000px;
   width: 100%;
@@ -20,18 +23,20 @@
   max-height: 140px;
   padding: 4px 14px;
 }
+
 .create_post_button {
-  width: 100px;
-  background-color: rgb(105, 104, 104);
+  width: 100%;
   padding: 4px 6px;
   font-size: 20px;
-  color: antiquewhite;
-  border-radius: 8px;
+  background-color: rgb(97, 218, 251);
   transition: .3s;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+
   &:hover {
-    background-color: rgb(175, 182, 189);
+    background-color: rgb(135, 116, 225);
+    color: rgb(104, 255, 151);
   }
 }
-
 
 
