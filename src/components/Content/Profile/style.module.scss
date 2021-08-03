@@ -91,3 +91,15 @@
   margin: 0 auto;
   text-align: center;
 }
+
+.status_change_descr {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 10px 0;
+}
+
+.status_change_symbols_left {
+  font-size: 20px;
+  padding: 6px 0 0 0;
+}

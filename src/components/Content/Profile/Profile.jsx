@@ -8,7 +8,6 @@ import ProfileStatus from "./ProfileStatus";
 
  const Profile = (props) => {
      if (!props.profile) {
-         debugger;
          return <Preloader/>
      }
 
@@ -30,7 +29,7 @@ import ProfileStatus from "./ProfileStatus";
                 <div className={style.profile}>
                     <div className={style.name_status_block}>
                         <p className={`${ms.regular_text} ${style.profile_name_text}`}>{props.profile.fullName}</p>
-                        <ProfileStatus status={props.profile.aboutMe}/>
+                        <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus}/>
                     </div>
                     <div className={style.info_blocks}>
                         <div className={style.profile_info}>
