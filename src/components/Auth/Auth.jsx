@@ -1,15 +1,23 @@
 import style from './style.module.css';
 import React from "react";
 import {Field, reduxForm} from "redux-form";
+import {Input} from "../common/FormsControls/FormsControls";
+import {required} from "../../utils/validators/validators";
 
 
 const AuthForm = (props) => {
     return <form className={style.auth_form} onSubmit={props.handleSubmit}>
         <div className={style.auth_form_input}>
-            <Field name={"login"} component={"input"} type={"text"}
+            <Field name={"login"}
+                   component={Input}
+                   validate={[required]}
+                   type={"text"}
                    placeholder={"Login"}/></div>
         <div className={style.auth_form_input}>
-            <Field name={"password"} component={"input"} type={"password"}
+            <Field name={"password"}
+                   component={Input}
+                   validate={[required]}
+                   type={"password"}
                    placeholder={"Password"}/></div>
         <div className={`${style.auth_form_checkbox} ${style.remember_field}`}>
             <Field name={"rememberMe"}

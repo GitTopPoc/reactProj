@@ -2,6 +2,8 @@ import React from "react";
 import style from "./style.module.css";
 import ms from "../../../../mainStyles/ms.module.css";
 import {Field, reduxForm} from "redux-form";
+import {Textarea} from "../../../common/FormsControls/FormsControls";
+import {MaxLengthCreator, required} from "../../../../utils/validators/validators";
 
 
 const Messages = (props) => {
@@ -21,11 +23,13 @@ const Messages = (props) => {
         </div>
     )
 }
-
+let maxLength200 = MaxLengthCreator(200)
 const SendMessageForm = (props) => {
     return <>
         <form onSubmit={props.handleSubmit}>
-            <Field className={style.input_field_text} component={'textarea'} name={'newMessageText'} placeholder={'Enter new message'}/>
+            <Field className={style.input_field_text} component={Textarea}
+                   validate={[required, maxLength200]}
+                   name={'newMessageText'} placeholder={'Enter new message'}/>
             <button className={style.button}>Send</button>
         </form>
     </>
