@@ -1,12 +1,5 @@
 import {connect} from "react-redux";
-import {
-    changeCurrentPage,
-    follow,
-    getUsers,
-    toggleFollowing,
-    unfollow
-} from "../../../redux/users-reducer";
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {changeCurrentPage, follow, getUsers, toggleFollowing, unfollow} from "../../../redux/users-reducer";
 import React from "react";
 import Users from "./Users";
 import {compose} from "redux";
@@ -48,7 +41,6 @@ let mapStateToProps = (state) => {
 }
 
 export default compose (
-    withAuthRedirect,
     connect(mapStateToProps, {
         changeCurrentPage,
         toggleFollowing,

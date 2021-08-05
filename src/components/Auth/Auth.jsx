@@ -7,7 +7,6 @@ import {Redirect} from "react-router-dom";
 
 
 const Auth = (props) => {
-    props.authorize();
     const onSubmit = (formData) => {
         props.login(formData.email,formData.password,formData.rememberMe);
 
@@ -39,6 +38,7 @@ const AuthForm = (props) => {
                    component={"input"}
                    type={"checkbox"}/> <p>remember
             me</p></div>
+        {props.error && <div className={style.wrong_data_block}><p>{props.error}</p></div>}
         <button className={style.send_form_button}>Sign in</button>
     </form>
 }

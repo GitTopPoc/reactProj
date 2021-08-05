@@ -5,17 +5,57 @@
   background-size: cover;
   border-bottom: 5px solid rgba(113, 109, 109, 0.74);
   width: 100%;
-}
 
-.header_logo {
-  max-height: 50px;
-  max-width: 60px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
 }
 
 .header_nav {
   display: flex;
   justify-content: space-between;
+  margin: 0 auto;
+}
+
+.show_clicked {
+  display: flex;
+}
+.logout_button {
+  margin: auto;
+  width: 100%;
+  max-width: 100px;
+  button {
+    padding: 2px 8px 4px;
+    border-radius: 12px;
+    background-color: rgb(135, 116, 225);
+    font-size: 20px;
+    color: #fff;
+    transition: .3s;
+    &:hover {
+      background-color: #bc79fd;
+    }
+  }
+
+}
+
+.show_menu_button {
+  display: none;
+  max-width: 200px;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+@media (max-width: 550px) {
+  .show_clicked {
+    display: none !important;
+  }
+  .show_menu_button {
+    display: block;
+  }
+  .header_nav {
+    display: block;
+  }
+
+  .logout_button {
+    margin: 0 auto 10px;
+    padding:  0 0 0 12px;
+  }
 }
