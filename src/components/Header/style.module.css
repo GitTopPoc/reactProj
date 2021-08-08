@@ -3,12 +3,17 @@
   background-size: cover;
   border-bottom: 5px solid rgba(113, 109, 109, 0.74);
   width: 100%;
+  z-index: 1111;
 }
 
 .header_nav {
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
+}
+
+.nav_parental {
+  position: relative;
 }
 
 .show_clicked {
@@ -20,7 +25,7 @@
   width: 100%;
   max-width: 100px;
 }
-.logout_button button {
+.logout_button button, .logout_button a {
   padding: 2px 8px 4px;
   border-radius: 12px;
   background-color: #8774e1;
@@ -28,19 +33,24 @@
   color: #fff;
   transition: 0.3s;
 }
-.logout_button button:hover {
+.logout_button button:hover, .logout_button a:hover {
   background-color: #bc79fd;
 }
 
 .show_menu_button {
   display: none;
-  max-width: 200px;
-  width: 100%;
+  max-width: 70px;
   text-align: center;
-  margin: 0 auto;
+  margin: 0;
 }
 
 @media (max-width: 550px) {
+  .header_background {
+    position: fixed;
+    top: 0;
+    border: none;
+  }
+
   .show_clicked {
     display: none !important;
   }
@@ -51,11 +61,27 @@
 
   .header_nav {
     display: block;
+    position: fixed;
+    background: #61dafb;
+    width: 100%;
+    top: 17px;
+    left: 0;
+    animation-duration: 0.5s;
+    animation-name: slidein;
+    z-index: 1;
   }
 
   .logout_button {
     margin: 0 auto 10px;
     padding: 0 0 0 12px;
+  }
+}
+@keyframes slidein {
+  from {
+    top: -300px;
+  }
+  to {
+    top: 0;
   }
 }
 

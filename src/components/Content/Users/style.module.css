@@ -97,4 +97,12 @@
   background-color: orange;
 }
 
+@media (max-width: 630px) {
+  .page_button {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+}
+
 /*# sourceMappingURL=style.module.css.map */

@@ -17,6 +17,7 @@
     "redux": "^4.1.0",
     "redux-form": "^8.3.7",
     "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0",
     "sass": "^1.35.1",
     "scss": "^0.2.4",
     "web-vitals": "^1.1.2"

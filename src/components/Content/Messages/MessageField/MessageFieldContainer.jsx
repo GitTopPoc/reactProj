@@ -1,13 +1,14 @@
 import {addMessageAction} from "../../../../redux/messages-reducer";
 import MessageField from "./MessageField";
 import {connect} from "react-redux";
+import {getStateMessageData} from "../../../../redux/messages-selector";
 
 
 let mapStateToProps = (state) => {
     return {
        messageData: () => {
 
-           return state.messagePage.messageData;
+           return getStateMessageData(state);
 
        }
     }

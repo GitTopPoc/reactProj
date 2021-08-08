@@ -3,6 +3,7 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import Messages from "./Messages";
 import {connect} from "react-redux";
+import {getStateDialogsData, getStateMessageData} from "../../../redux/messages-selector";
 class MessagesContainer extends React.Component {
     componentDidMount() {
 
@@ -17,8 +18,8 @@ class MessagesContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => ({
-    dialogsData : state.messagePage.dialogsData,
-    messageData : state.messagePage.messageData
+    dialogsData : getStateDialogsData(state),
+    messageData : getStateMessageData(state)
 
 });
 
