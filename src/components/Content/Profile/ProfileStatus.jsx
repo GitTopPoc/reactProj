@@ -1,62 +1,59 @@
-import React from "react";
+import React, {useEffect, useRef, useState} from "react";
 import style from "./style.module.css";
 
-let statusInputRef = React.createRef();
-class ProfileStatus extends React.Component {
-    state = {
-        editMode: false,
-        status: this.props.status,
-        symbolsLeft: 300
-    }
-    activateEditMode = () => {
-        this.setState({editMode: true})
-    }
 
-    deactivateEditMode = ()  => {
-        this.setState({editMode: false})
-        this.props.updateUserStatus(this.state.status)
-    }
+const ProfileStatus = (props) => {
+    const [editMode,setEditMode] = useState(false)
+    const [status,setStatus] = useState(props.status)
+    const [symbolsLeft, setSymbolsLeft] = useState(300)
+    let statusInputRef = useRef(status);
 
-    statusChange = (yo) => {
-    this.setState({
-        status: yo.currentTarget.value,
-        symbolsLeft: 300 - yo.currentTarget.value.length
-    })
 
+    useEffect(()=> {
+        setStatus(props.status);
+    }, [props.status])
+
+
+    const activateEditMode = () => {
+        setEditMode(true)
+        statusInputRef.current = status;
     }
 
-    componentDidUpdate(prevProps: Readonly<P>, prevState: Readonly<S>, snapshot: SS) {
-        if (prevProps.status !== this.props.status) {
-            this.setState({
-                status: this.props.status
-            })
-        }
+    const deactivateEditMode = ()  => {
+        setEditMode(false)
+        props.updateUserStatus(status)
     }
 
-    render() {
+    const statusChange = (yo) => {
+            setStatus(yo.currentTarget.value)
+            setSymbolsLeft(300 - yo.currentTarget.value.length)
+    }
 
-        return <div>
-            {!this.state.editMode &&
-            <div>
-                <p onDoubleClick={this.activateEditMode}
-                   className={style.profile_info_text}>{!this.props.status ? 'No status' : this.props.status}</p>
-            </div>
-            }
-            {this.state.editMode &&
-            <div>
-                <input autoFocus={true} type='text' onBlur={this.deactivateEditMode}
-                       className={`${style.profile_info_text} ${style.status_input}`} placeholder='Type new status...'
-                       value={ this.state.status} ref={statusInputRef} onChange={this.statusChange}/>
-                <div className={style.status_change_descr}>
-                    <p className={style.status_change_symbols_left}>Symbols left: {this.state.symbolsLeft}</p>
+    const setSymbols = (yo) => {
+        setSymbolsLeft(300 - yo.currentTarget.value.length)
+    }
 
-                </div>
-            </div>
-            }
 
+    return <div>
+        {!editMode &&
+        <div>
+            <p onDoubleClick={activateEditMode}
+               className={style.profile_info_text}>{!status ? 'No status' : status}</p>
         </div>
-    }
-}
+        }
+        {editMode &&
+        <div>
+            <input autoFocus={true} type='text' onBlur={deactivateEditMode}
+                   className={`${style.profile_info_text} ${style.status_input}`} placeholder='Type new status...'
+                   value={status} ref={statusInputRef} onChange={statusChange} onFocus={setSymbols}/>
+            <div className={style.status_change_descr}>
+                <p className={style.status_change_symbols_left}>Symbols left: {symbolsLeft}</p>
 
+            </div>
+        </div>
+        }
+
+    </div>
+}
 
 export default ProfileStatus;
