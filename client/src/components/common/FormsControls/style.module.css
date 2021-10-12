@@ -1,0 +1,11 @@
+.form_control.error textarea, .form_control.error input {
+  border: solid 3px red;
+}
+
+.error_span {
+  color: red;
+  margin: 0 auto 4px;
+  text-align: center;
+}
+
+/*# sourceMappingURL=style.module.css.map */
