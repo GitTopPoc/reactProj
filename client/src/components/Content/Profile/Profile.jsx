@@ -22,14 +22,14 @@ const Profile = (props) => {
 
                     <div className={style.profile_main_info}>
                         {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-                        <img className={style.profile_photo} src={props.profile.photos.large === null ? userPhoto : props.profile.photos.large} alt="no photo"/>
+                        <img className={style.profile_photo} src={props.profile.photo === null ? userPhoto : props.profile.photo} alt="no photo"/>
 
                     </div>
                 </div>
                 <div className={style.profile}>
                     <div className={style.name_status_block}>
                         <p className={`${ms.regular_text} ${style.profile_name_text}`}>{props.profile.fullName}</p>
-                        <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus}/>
+                        <ProfileStatus userId={props.userId} status={props.status} updateUserStatus={props.updateUserStatus}/>
                     </div>
                     <div className={style.info_blocks}>
                         <div className={style.profile_info}>

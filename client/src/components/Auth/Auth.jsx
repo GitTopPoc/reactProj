@@ -4,11 +4,12 @@ import {Field, reduxForm} from "redux-form";
 import {Input} from "../common/FormsControls/FormsControls";
 import {required} from "../../utils/validators/validators";
 import {Redirect} from "react-router-dom";
+import registerStyle from "../Register/style.module.css";
 
 
 const Auth = (props) => {
     const onSubmit = (formData) => {
-        props.login(formData.email,formData.password,formData.rememberMe);
+        props.login(formData.email,formData.password);
 
     }
    if(props.state.auth.isAuth) {
@@ -33,13 +34,9 @@ const AuthForm = (props) => {
                    validate={[required]}
                    type={"password"}
                    placeholder={"Password"}/></div>
-        <div className={`${style.auth_form_checkbox} ${style.remember_field}`}>
-            <Field name={"rememberMe"}
-                   component={"input"}
-                   type={"checkbox"}/> <p>remember
-            me</p></div>
+
         {props.error && <div className={style.wrong_data_block}><p>{props.error}</p></div>}
-        <button className={style.send_form_button}>Sign in</button>
+        <button className={`${style.send_form_button} ${registerStyle.register_button}`}>Sign in</button>
     </form>
 }
 

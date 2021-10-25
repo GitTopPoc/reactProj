@@ -39,6 +39,13 @@
   background-color: #bc79fd;
 }
 
+.auth_buttons {
+  display: flex;
+}
+.auth_buttons div {
+  margin: auto 10px;
+}
+
 .show_menu_button {
   display: none;
   max-width: 70px;

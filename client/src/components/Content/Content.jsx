@@ -10,6 +10,7 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "../../redux/app-reducer";
 import Preloader from "../common/Preloader/Preloader";
+import RegisterContainer from "../Register/RegisterContainer";
 
 
 class Content extends React.Component {
@@ -23,6 +24,7 @@ class Content extends React.Component {
         }
         return (<>
                 <Route path='/auth' render={() => <AuthContainer/>}/>
+                <Route path='/register' render={() => <RegisterContainer/>}/>
                 <div className={ms.block_container}>
 
                     <div className={style.content_blocks}>

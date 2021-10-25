@@ -1,9 +1,8 @@
 import axios from "axios";
 
 const instance = axios.create({
-    withCredentials: true,
-    baseURL: 'https://social-network.samuraijs.com/api/1.0/',
-    headers: {"API-KEY": "8c9deacd-bd04-4b1e-9a2e-325d83666318"}
+    baseURL: 'http://localhost:5000/api',
+    headers: {'Authorization': `Bearer ${localStorage.getItem('token')}`}
 })
 
 
@@ -27,17 +26,24 @@ export const usersAPI = {
 
 }
 
+export const registerAPI = {
+
+    register(email, name, password) {
+        return instance.post('/auth/registration', {email,name,password})
+    }
+}
+
+
 export const authAPI = {
     authMe() {
-        return instance.get(`auth/me`).then(response => {
+        return instance.get(`auth/auth`).then(response => {
            return response.data;
         })
     },
-    login(email,password,rememberMe = false) {
-        return instance.post('/auth/login', {email,password,rememberMe})
-    },
-    logout() {
-        return instance.delete('/auth/login')
+    login(email,password) {
+        return instance.post('/auth/login', {email,password}).then(response => {
+            return response.data;
+        })
     }
 }
 
@@ -48,10 +54,10 @@ export const profileAPI = {
         })
     },
     getStatus(userId) {
-        return instance.get(`profile/status/` + userId)
+        return instance.get(`profile/getstatus/${userId}`)
     },
-    updateStatus(status) {
-        return instance.put(`profile/status`, {status})
+    updateStatus(userId, status) {
+        return instance.patch(`profile/status/${userId}`, {status})
     }
 }
 

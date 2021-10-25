@@ -55,14 +55,14 @@ export const getMyProfile = (userId) => {
 export const getUserStatus = (userId) => {
     return (dispatch) => {
         profileAPI.getStatus(userId).then(response => {
-            dispatch(getStatus(response.data));
+            dispatch(getStatus(response.data.status));
         })
     }
 }
 
-export const updateUserStatus = (status) => {
+export const updateUserStatus = (userId, status) => {
     return (dispatch) => {
-        profileAPI.updateStatus(status).then(response => {
+        profileAPI.updateStatus(userId, status).then(response => {
             if(response.data.resultCode === 0) {
                 dispatch(getStatus(status));
             }

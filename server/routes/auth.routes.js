@@ -5,11 +5,14 @@ const jwt = require("jsonwebtoken")
 const config = require("config");
 const {check, validationResult} = require("express-validator")
 const router = new Router()
+const authMiddleware = require('../middleware/auth.middleware')
+
 
 router.post('/registration',
 
     [
         check('email', 'Uncorrect email').isEmail(),
+        check('name', 'Name must be longer than 2 and shorter than 50 symbols').isLength({min:4, max:50}),
         check('password', 'Password must be longer than 4 and shorter than 12 symbols').isLength({min:4, max:12}),
     ],
     async (req, res) => {
@@ -25,15 +28,22 @@ router.post('/registration',
             return res.status(400).json({message: `User with email ${email} already exist`})
         }
         const  hashPassword = await bcrypt.hash(password, 8)
-        const user = new User({email, name, password: hashPassword})
+        const status = "New user";
+        const photo = "";
+        const github = "";
+        const facebook = "";
+        const linkedin = "";
+        const instagram = "";
+        const {following, followers} = [];
+        const user = new User({email, name, password: hashPassword, photo, status, github, facebook, linkedin,instagram, following, followers})
         await user.save()
-        return  res.json({message: "User was created"})
+        return  res.json({resultCode: "0", message: "User was created"})
 
 
     }
     catch (e) {
         console.log(e)
-        res.send({message: "Server error"})
+        res.send({message: `${e}`})
     }
 })
 
@@ -52,6 +62,7 @@ router.post('/login', async (req, res) => {
             const token = jwt.sign({id: user.id}, config.get("secretKey"), {expiresIn: "1h"})
             return res.json({
                 token,
+                resultCode: "0",
                 user: {
                     id: user.id,
                     email: user.email,
@@ -61,6 +72,52 @@ router.post('/login', async (req, res) => {
                 }
             })
 
+        }
+        catch (e) {
+            console.log(e)
+            res.send({message: "Server error"})
+        }
+    })
+
+router.get('/auth', authMiddleware,
+    async (req, res) => {
+
+    try {
+        const user = await User.findOne({id: req.user.id})
+        const token = jwt.sign({id: user.id}, config.get("secretKey"), {expiresIn: "1h"})
+        return res.json({
+            token,
+            resultCode: "0",
+            user: {
+                id: user.id,
+                email: user.email,
+                name: user.name,
+                photo: user.photo,
+                status: user.status
+            }
+        })
+    }
+    catch (e) {
+        console.log(e)
+        res.send({message: "Server error"})
+    }
+})
+
+router.get(`/check`,
+    async (req, res) => {
+
+        try {
+            const user = await User.findOne({id: "6171b156f86640d1a658bcca"})
+            return res.json({
+                resultCode: "0",
+                user: {
+                    id: user.id,
+                    email: user.email,
+                    name: user.name,
+                    photo: user.photo,
+                    status: user.status
+                }
+            })
         }
         catch (e) {
             console.log(e)

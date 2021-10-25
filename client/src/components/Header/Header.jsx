@@ -7,6 +7,7 @@ import {logout} from "../../redux/auth-reducer";
 import {getStateIsAuth} from "../../redux/auth-selector";
 import {NavLink, withRouter} from "react-router-dom";
 import {compose} from "redux";
+import {getStateProfile} from "../../redux/profile-selector";
 
 
 class Header extends React.Component<{}> {
@@ -21,8 +22,6 @@ class Header extends React.Component<{}> {
 
 
     render() {
-
-
         return (
 
             <div className={style.header_background}>
@@ -35,7 +34,10 @@ class Header extends React.Component<{}> {
                             <NavbarContainer store={this.props.store}/>
                             {this.props.isAuth ? <div className={`${style.logout_button}`}>
                                 <button onClick={this.props.logout}>Logout</button>
-                            </div> : <div  className={`${style.logout_button}`}> <NavLink to={'/auth'}>Login</NavLink></div>}
+                            </div> : <div className={style.auth_buttons}>
+                                <div  className={`${style.logout_button}`}> <NavLink to={'/auth'}>Login</NavLink></div>
+                                <div  className={`${style.logout_button}`}> <NavLink to={'/register'}>Register</NavLink></div>
+                            </div>}
                         </div>
 
                     </div>
@@ -48,7 +50,8 @@ class Header extends React.Component<{}> {
 
 let mapStateToProps = (state) => {
     return {
-        isAuth : getStateIsAuth(state)
+        isAuth : getStateIsAuth(state),
+        name: getStateProfile(state)
     }
 }
 
