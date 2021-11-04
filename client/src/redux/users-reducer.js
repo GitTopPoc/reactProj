@@ -1,5 +1,4 @@
 import {usersAPI} from "../api/api";
-import {getStateFollowingProcessing} from "./users-selectors";
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
