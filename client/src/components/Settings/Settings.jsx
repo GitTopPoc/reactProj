@@ -2,13 +2,19 @@ import React from "react";
 import {useForm} from "react-hook-form";
 
 
-const Settings = () => {
+const Settings = (props) => {
 
-    const onSubmit = (data) => console.log(data);
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = data => alert(JSON.stringify(data));
 
     return (
       <>
-      check
+          <form onSubmit={handleSubmit(onSubmit)}>
+              <input defaultValue={props.state.settings.name} {...register("example")} />
+              <input {...register("exampleRequired", { required: true })} />
+              {errors.exampleRequired && <span>This field is required</span>}
+              <input type="submit" />
+          </form>
       </>
     );
 }

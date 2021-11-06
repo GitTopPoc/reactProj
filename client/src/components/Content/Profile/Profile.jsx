@@ -3,7 +3,7 @@ import style from './style.module.css';
 import ms from '../../../mainStyles/ms.module.css';
 import PostsContainer from "./Posts/PostsContainer";
 import Preloader from "../../common/Preloader/Preloader";
-import userPhoto from '../../../assets/image/default-image.jpg'
+import userPhoto from "../../../assets/image/default-image.jpg";
 import ProfileStatus from "./ProfileStatus";
 
 const Profile = (props) => {
@@ -22,7 +22,7 @@ const Profile = (props) => {
 
                     <div className={style.profile_main_info}>
                         {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-                        <img className={style.profile_photo} src={props.profile.photo === null ? userPhoto : props.profile.photo} alt="no photo"/>
+                        <img className={style.profile_photo} src={props.profile.photo === "" ? userPhoto : props.profile.photo} alt="no photo"/>
 
                     </div>
                 </div>

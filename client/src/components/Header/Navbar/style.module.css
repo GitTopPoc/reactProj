@@ -1,10 +1,14 @@
 .header_links_block {
-  margin: 10px auto;
-  padding: 0 20px;
+  background-color: #ffffff10;
+  backdrop-filter: blur(12px);
+  margin: 0 auto;
+  padding: 10px 20px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 .header_links_block ul {
-  display: flex;
-  justify-content: space-between;
+  display: flex !important;
+  justify-content: space-around;
 }
 .header_links_block ul li {
   text-align: center;
@@ -12,12 +16,13 @@
 }
 .header_links_block ul li a {
   text-decoration: none;
-  color: black;
+  color: #ffffff;
 }
 .header_links_block ul li a p {
   text-align: center;
   transition: 0.3s;
   line-height: 26px;
+  font-size: 20px;
 }
 .header_links_block ul li a p:hover {
   transform: scale(1.1);
@@ -26,15 +31,36 @@
 
 .active p {
   color: #ff6900;
+  border-bottom: 2px solid #ff6900;
+}
+
+.logout_button {
+  margin: 0 10px;
+  width: 100%;
+  max-width: 100px;
+  transition: 0.3s;
+}
+.logout_button button, .logout_button a {
+  padding: 2px 8px 4px;
+  background-color: #61dafb;
+  font-size: 16px;
+  color: black;
+  transition: 0.3s;
+  border-radius: 10px;
+}
+.logout_button button:hover, .logout_button a:hover {
+  background-color: #8774e1;
+  color: #66ff97;
+}
+
+.auth_buttons {
+  display: flex;
+  margin: 4px 0 0 0;
 }
 
 @media (max-width: 550px) {
-  .show_clicked {
-    display: none;
-  }
-
   .header_links_block {
-    padding: 0 0 0 0;
+    padding: 6px 0;
     margin: 0;
   }
   .header_links_block ul {
@@ -42,6 +68,9 @@
   }
   .header_links_block ul li {
     margin: 0 auto;
+  }
+  .header_links_block ul li a p {
+    font-size: 16px;
   }
 }
 
