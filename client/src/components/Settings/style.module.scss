@@ -1,0 +1,78 @@
+.main_wrapper {
+  display: flex;
+  justify-content: space-around;
+  padding: 40px 0;
+}
+
+
+.settings_fields_wrapper {
+  width: 200px;
+  margin: 0 10px 0 20px;
+  background-color: #ffffff10;
+  border-radius: 10px;
+  padding: 10px 0;
+  max-height: 320px;
+  box-shadow: 0 0.8rem 1rem #00000080;
+}
+
+.photo_wrapper {
+  padding: 10px 24px;
+
+  img {
+    width: 150px;
+    border-radius: 50%;
+    margin: 0 auto;
+
+  }
+}
+
+.settings_tab {
+  cursor: pointer;
+  transition: .3s;
+
+  div {
+    padding: 6px;
+    width: 100%;
+
+    .tab_descr {
+      display: flex;
+      color: #ffffff;
+      font-size: 18px;
+      padding: 6px;
+
+      p {
+        transition: .3s;
+        margin: 0 0 0 10px;
+      }
+    }
+  }
+
+  :hover {
+    p, span {
+      color: rgb(255, 105, 0);
+    }
+  }
+}
+
+.active_tab {
+  .descr_wrapper {
+    background-color: #848383;
+    border-left: 3px solid rgb(255, 105, 0);
+  }
+
+  p, span {
+    border: none !important;
+    color: rgb(255, 105, 0);
+  }
+
+}
+
+.settings_forms_wrapper {
+  margin: 0 20px 0 10px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #ffffff10;
+  box-shadow: 0 1rem 1rem #00000080;
+  width: 100%;
+  min-height: 400px;
+}
