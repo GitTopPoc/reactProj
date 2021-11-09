@@ -12,8 +12,7 @@ import Password from "./SettingsForms/Password";
 import Photo from "./SettingsForms/Photo";
 
 const Settings = (props) => {
-    /*const {register, handleSubmit, formState: {errors}} = useForm();
-    const onSubmit = data => alert(JSON.stringify(data));*/
+
     const [activeTab, setActiveTab] = useState("personal-data");
     let changeactive = (data) => {
         setActiveTab(data)
@@ -21,13 +20,6 @@ const Settings = (props) => {
 
     return (
         <div className={ms.block_container}>
-            {/* <form onSubmit={handleSubmit(onSubmit)}>
-              <input defaultValue={props.state.settings.name} {...register("example")} />
-              <input {...register("exampleRequired", { required: true })} />
-              {errors.exampleRequired && <span>This field is required</span>}
-              <input type="submit" />
-          </form>*/}
-
             <div>
                 {props.state.auth.isAuth === true ?
                     <div className={style.main_wrapper}>
@@ -70,9 +62,12 @@ const Settings = (props) => {
 
                         </div>
                         <div className={style.settings_forms_wrapper}>
-                            <Route exact path={'/settings'} render={() => <PersonalData/>}/>
-                            <Route exact path={'/settings/password'} render={() => <Password/>}/>
-                            <Route exact path={'/settings/photo'} render={() => <Photo/>}/>
+                            {props.state.settings.name !== null ? <>
+                                    <Route exact path={'/settings'} render={() => <PersonalData state={props.state}/>}/>
+                                    <Route exact path={'/settings/password'}
+                                           render={() => <Password state={props.state}/>}/>
+                                    <Route exact path={'/settings/photo'} render={() => <Photo state={props.state}/>}/></> :
+                                <Preloader/>}
                         </div>
                     </div>
 
