@@ -10,6 +10,7 @@ import {faLock, faCog, faPortrait} from '@fortawesome/free-solid-svg-icons'
 import PersonalData from "./SettingsForms/PersonalData"
 import Password from "./SettingsForms/Password";
 import Photo from "./SettingsForms/Photo";
+import {setResultMessage} from "../../redux/settings-reducer";
 
 const Settings = (props) => {
 
@@ -63,7 +64,7 @@ const Settings = (props) => {
                         </div>
                         <div className={style.settings_forms_wrapper}>
                             {props.state.settings.name !== null ? <>
-                                    <Route exact path={'/settings'} render={() => <PersonalData state={props.state}/>}/>
+                                    <Route exact path={'/settings'} render={() => <PersonalData setResultMessage={props.setResultMessage} updateProfileInfo={props.updateProfileInfo} state={props.state}/>}/>
                                     <Route exact path={'/settings/password'}
                                            render={() => <Password state={props.state}/>}/>
                                     <Route exact path={'/settings/photo'} render={() => <Photo state={props.state}/>}/></> :

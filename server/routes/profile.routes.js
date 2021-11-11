@@ -70,6 +70,44 @@ router.get('/getstatus/:userId', async (req, res) => {
     }
 })
 
+router.patch('/update-profile/:userId', async (req, res) => {
+
+    try {
+        const user = await User.findById(req.params.userId)
+
+        if(!user) {
+            return res.json({
+                resultCode: "404",
+                message: "User not found"
+            })
+        }
+        Object.assign(user, req.body.newData);
+        user.save();
+        return res.json({
+            resultCode: "0",
+            message: "Profile data changed successfully",
+            email: user.email,
+            fullName: user.name,
+            photo: user.photo,
+            status: user.status,
+            contacts: {
+                github: user.github,
+                facebook: user.facebook,
+                linkedin: user.linkedin,
+                instagram: user.instagram
+            }
+        }
+        )
+
+    }
+    catch (e) {
+        console.log(e)
+        res.send({message: `${e}`})
+    }
+})
+
+
+
 
 
 module.exports = router

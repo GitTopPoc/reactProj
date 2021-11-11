@@ -58,6 +58,11 @@ export const profileAPI = {
     },
     updateStatus(userId, status) {
         return instance.patch(`profile/status/${userId}`, {status})
+    },
+    updateProfile(userId, newData) {
+        return instance.patch(`profile/update-profile/${userId}`, {newData}).then(response => {
+            return response.data;
+        })
     }
 }
 
