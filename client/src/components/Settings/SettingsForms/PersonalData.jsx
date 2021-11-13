@@ -65,7 +65,7 @@ let PersonalData = (props) => {
                 <input placeholder={"Enter link"} className={style.form_input}
                        defaultValue={props.state.settings.facebook} {...register("facebook")} />
             </div>
-            <div className={style.form_field}><p className={style.form_heading}>Your LinkedId :</p>
+            <div className={style.form_field}><p className={style.form_heading}>Your LinkedIn :</p>
                 <input placeholder={"Enter link"} className={style.form_input}
                        defaultValue={props.state.settings.linkedin} {...register("linkedin")} />
             </div>
