@@ -1,13 +1,15 @@
 const Router = require("express")
 const User = require("../models/User")
 const router = new Router()
+const authMiddleware = require("../middleware/auth.middleware")
+const fileController = require("../controllers/fileController")
 
 
-router.get(`/:userId`,
+router.get(`/`, authMiddleware,
     async (req, res) => {
 
         try {
-            const user = await User.findById(req.params.userId)
+            const user = await User.findById(req.user.id)
             return res.json({
                 resultCode: "0",
                 userId: user.id,
@@ -23,18 +25,18 @@ router.get(`/:userId`,
                 }
             })
         } catch (e) {
-            console.log(e)
             res.send({message: "Server error"})
         }
     })
 
 
 
-router.patch('/status/:userId', async (req, res) => {
+router.patch('/status', authMiddleware,
+    async (req, res) => {
 
     try {
 
-        const user = await User.findById(req.params.userId)
+        const user = await User.findOne({id: req.user.id})
 
         if(!user) {
             return res.json({
@@ -50,30 +52,28 @@ router.patch('/status/:userId', async (req, res) => {
         })
     }
     catch (e) {
-        console.log(e)
         res.send({message: `${e}`})
     }
 })
 
-router.get('/getstatus/:userId', async (req, res) => {
+router.get('/getstatus', authMiddleware, async (req, res) => {
 
     try {
-        const user = await User.findById(req.params.userId)
+        const user = await User.findOne({id: req.user.id})
         return res.json({
             resultCode: "0",
             status: user.status
         })
     }
     catch (e) {
-        console.log(e)
         res.send({message: `${e}`})
     }
 })
 
-router.patch('/update-profile/:userId', async (req, res) => {
+router.patch('/update-profile', authMiddleware, async (req, res) => {
 
     try {
-        const user = await User.findById(req.params.userId)
+        const user = await User.findOne({id: req.user.id})
 
         if(!user) {
             return res.json({
@@ -101,10 +101,12 @@ router.patch('/update-profile/:userId', async (req, res) => {
 
     }
     catch (e) {
-        console.log(e)
         res.send({message: `${e}`})
     }
 })
+
+router.post('/avatar', authMiddleware, fileController.uploadAvatar)
+router.delete('/avatar', authMiddleware, fileController.deleteAvatar)
 
 
 

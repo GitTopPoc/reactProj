@@ -13,7 +13,7 @@ router.post('/registration',
     [
         check('email', 'Uncorrect email').isEmail(),
         check('name', 'Name must be longer than 2 and shorter than 50 symbols').isLength({min:4, max:50}),
-        check('password', 'Password must be longer than 4 and shorter than 12 symbols').isLength({min:4, max:12}),
+        check('password', 'Password must be longer than 5 and shorter than 12 symbols').isLength({min:5, max:12}),
     ],
     async (req, res) => {
 
@@ -103,28 +103,31 @@ router.get('/auth', authMiddleware,
     }
 })
 
-router.get(`/check`,
-    async (req, res) => {
+router.patch('/change-password', authMiddleware,  async (req, res) => {
 
-        try {
-            const user = await User.findOne({id: "6171b156f86640d1a658bcca"})
+    try {
+        console.log(req.body)
+        const user = await User.findOne({id: req.user.id})
+        const isPassValid = bcrypt.compareSync(req.body.data.password, user.password)
+        if (!isPassValid) {
             return res.json({
-                resultCode: "0",
-                user: {
-                    id: user.id,
-                    email: user.email,
-                    name: user.name,
-                    photo: user.photo,
-                    status: user.status
-                }
+                resultCode: "400",
+                message: "Invalid password"
             })
         }
-        catch (e) {
-            console.log(e)
-            res.send({message: "Server error"})
-        }
-    })
+        const  hashPassword = await bcrypt.hash(req.body.data.newPassword, 8)
+        await User.findOneAndUpdate(user, {password: hashPassword})
+        user.save();
+        return res.json({
+            resultCode: "0",
+            message: "Password changed successfully"
+        })
 
-
+    }
+    catch (e) {
+        console.log(e)
+        res.send({message: "Server error"})
+    }
+})
 
 module.exports = router

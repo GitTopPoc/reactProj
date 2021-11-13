@@ -1,8 +1,9 @@
 import axios from "axios";
+import {API_URL} from "../config";
 
 const instance = axios.create({
     baseURL: 'http://localhost:5000/api',
-    headers: {'Authorization': `Bearer ${localStorage.getItem('token')}`}
+    headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
 })
 
 
@@ -14,12 +15,12 @@ export const usersAPI = {
         })
     },
     unfollow(userId) {
-        return instance.delete('follow/'+ userId).then(response => {
+        return instance.delete('follow/' + userId).then(response => {
             return response.data;
         })
     },
     follow(userId) {
-        return instance.post('follow/'+ userId).then(response => {
+        return instance.post('follow/' + userId).then(response => {
             return response.data;
         })
     }
@@ -29,7 +30,7 @@ export const usersAPI = {
 export const registerAPI = {
 
     register(email, name, password) {
-        return instance.post('/auth/registration', {email,name,password})
+        return instance.post('/auth/registration', {email, name, password})
     }
 }
 
@@ -37,30 +38,47 @@ export const registerAPI = {
 export const authAPI = {
     authMe() {
         return instance.get(`auth/auth`).then(response => {
-           return response.data;
+            return response.data;
         })
     },
-    login(email,password) {
-        return instance.post('/auth/login', {email,password}).then(response => {
+    login(email, password) {
+        return instance.post('/auth/login', {email, password}).then(response => {
+            return response.data;
+        })
+    },
+    passwordChange(data) {
+        return instance.patch(`auth/change-password`, {data}).then(response => {
             return response.data;
         })
     }
 }
 
 export const profileAPI = {
-    getProfile(userId) {
-        return instance.get(`profile/${userId}`).then(response => {
-           return response.data;
+    getProfile() {
+        return instance.get(`profile`).then(response => {
+            return response.data;
         })
     },
-    getStatus(userId) {
-        return instance.get(`profile/getstatus/${userId}`)
+    getStatus() {
+        return instance.get(`profile/getstatus`)
     },
-    updateStatus(userId, status) {
-        return instance.patch(`profile/status/${userId}`, {status})
+    updateStatus(status) {
+        return instance.patch(`profile/status`, {status})
     },
-    updateProfile(userId, newData) {
-        return instance.patch(`profile/update-profile/${userId}`, {newData}).then(response => {
+    updateProfile(newData) {
+        return instance.patch(`profile/update-profile`, {newData}).then(response => {
+            return response.data;
+        })
+    },
+    updateAvatar(file) {
+        return axios.post(`${API_URL}api/profile/avatar`, file,
+            {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}
+        ).then(response => {
+            return response.data
+        })
+    },
+    deleteAvatar() {
+        return instance.delete(`profile/avatar`).then(response => {
             return response.data;
         })
     }

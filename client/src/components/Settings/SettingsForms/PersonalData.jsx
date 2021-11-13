@@ -5,9 +5,12 @@ import style from "../style.module.css"
 let PersonalData = (props) => {
     const {register, handleSubmit, formState: {errors}} = useForm();
     const [formErrorText, setFormErrorText] = useState(null);
-    const [formResultText, setFormResultText] = useState(null);
+
     useEffect(() => {
-        setFormResultText(props.state.settings.resultMessage)
+        setTimeout(
+            function() {
+                props.setResultMessage(null)
+            }, 20000);
     }, [props.state.settings.resultMessage]);
     const onSubmit = (data) => {
         setFormErrorText(null)
@@ -21,7 +24,7 @@ let PersonalData = (props) => {
             setFormErrorText("You haven`t changed anything");
             props.setResultMessage(null)
         } else {
-            props.updateProfileInfo(props.state.auth.userId, data)
+            props.updateProfileInfo(data)
         }
 
     };
@@ -71,7 +74,7 @@ let PersonalData = (props) => {
                        defaultValue={props.state.settings.instagram} {...register("instagram")} />
             </div>
             <div className={style.submit_error_text}><p>{formErrorText}</p></div>
-            <div className={style.submit_result_text}><p>{formResultText}</p></div>
+            <div className={style.submit_result_text}><p>{props.state.settings.resultMessage}</p></div>
             <div className={style.submit_settings}><input type="submit" value={"Save"}/></div>
         </form>
     </div>
