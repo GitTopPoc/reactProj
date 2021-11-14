@@ -9,7 +9,8 @@ router.get(`/`, authMiddleware,
     async (req, res) => {
 
         try {
-            const user = await User.findById(req.user.id)
+
+            const user = await User.findById(req.query.userId)
             return res.json({
                 resultCode: "0",
                 userId: user.id,

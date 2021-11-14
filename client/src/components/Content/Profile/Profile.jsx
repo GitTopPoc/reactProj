@@ -12,12 +12,11 @@ import facebookLogo from "../../../assets/image/facebook.png"
 import linkedinLogo from "../../../assets/image/linkedin.png"
 
 const Profile = (props) => {
-    let [socialLinks, setSocialLinks] = useState()
-
+    let [socialLinks, setSocialLinks] = useState(false)
     useEffect(() => {
-        if (!props.profile) {
-            setSocialLinks(null)
-        } else setSocialLinks("1")
+        if (props.profile && props.profile.contacts.github === "" && props.profile.contacts.facebook === "" && props.profile.contacts.linkedin === "" && props.profile.contacts.instagram === "") {
+            setSocialLinks(false)
+        } else setSocialLinks(true)
     }, [props.profile]);
 
     if (!props.profile) {
@@ -40,7 +39,7 @@ const Profile = (props) => {
                     </div>
                 </div>
                 <div className={style.profile}>
-                    {socialLinks &&
+                    {socialLinks === true &&
                     <div className={`${style.info_blocks}`}>
                         <p className={style.social_links_text}>Social links</p>
                         <div className={style.profile_info}>

@@ -4,14 +4,17 @@ import ms from "../../../mainStyles/ms.module.css";
 import userPhoto from "../../../assets/image/default-image.jpg";
 import Preloader from "../../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
+import {API_URL} from "../../../config";
 
 const Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
-
+    let minUsers = 0;
     let pages = [];
-
+    if (pagesCount <= 10) {
+        minUsers = pagesCount;
+    }
     if (props.currentPage < 5) {
-        for (let i = 1; i <= 11; i++) {
+        for (let i = 1; i <= minUsers; i++) {
             pages.push(i);
         }
     } else {
@@ -51,15 +54,16 @@ const Users = (props) => {
         {
             props.isFetching ? <Preloader/> : <div className={`${style.users_wrapper}`}>
                 {
-                    props.users.map(u => <div className={style.user_block} key={u.id}>
+                    props.users.length > 0 && props.users[0].map(u => <div className={style.user_block} key={u._id}>
                             <div>
 
-                                <NavLink to={'/profile/' + u.id}>
+                                <NavLink to={'/profile/' + u._id}>
                                     {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
                                     <img className={style.user_photo}
-                                         src={u.photos.small != null ? u.photos.small : userPhoto}
+                                         src={u.photo !== "" ? `${API_URL}\\${u.photo}` : userPhoto}
                                          alt="no image"/>
                                 </NavLink>
+                                {props.userId !== u._id &&
                                 <div className={style.user_block_follow_block}>
                                     {
                                         u.followed ?
@@ -71,11 +75,11 @@ const Users = (props) => {
                                                     className={`${style.user_block_follow_button} ${style.user_block_follow}`}
                                                     onClick={() => {props.follow(u.id);}}>Follow</button>
                                     }
-                                </div>
+                                </div>}
                             </div>
                             <div className={style.user_info_block}>
                                 <div>
-                                    <NavLink to={'/profile/' + u.id}>
+                                    <NavLink to={'/profile/' + u._id}>
                                         <p className={`${style.user_info_name}`}>{u.name}</p>
                                     </NavLink>
                                     <p className={style.user_info_status}>{u.status ? u.status : 'No status yet...'}</p>

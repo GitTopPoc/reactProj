@@ -20,6 +20,7 @@
 .user_photo {
   height: 70px;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .user_block_follow_block {
@@ -65,6 +66,8 @@
   font-size: 22px;
   font-weight: 700;
   color: #2b2b2b;
+  cursor: pointer;
+
 }
 
 .user_info_status {
