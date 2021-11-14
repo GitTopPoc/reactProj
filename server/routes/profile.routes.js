@@ -60,7 +60,7 @@ router.patch('/status', authMiddleware,
 router.get('/getstatus', authMiddleware, async (req, res) => {
 
     try {
-        const user = await User.findOne({id: req.user.id})
+        const user = await User.findById(req.query.userId)
         return res.json({
             resultCode: "0",
             status: user.status

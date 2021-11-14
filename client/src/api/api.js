@@ -59,11 +59,11 @@ export const profileAPI = {
             return response.data;
         })
     },
-    getStatus() {
-        return instance.get(`profile/getstatus`)
+    getStatus(userId) {
+        return instance.get(`profile/getstatus?userId=${userId}`)
     },
-    updateStatus(status) {
-        return instance.patch(`profile/status`, {status})
+    updateStatus(userId, status) {
+        return instance.patch(`profile/status?usedId=${userId}`, {status})
     },
     updateProfile(newData) {
         return instance.patch(`profile/update-profile`, {newData}).then(response => {
