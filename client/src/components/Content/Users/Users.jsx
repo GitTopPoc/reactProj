@@ -7,6 +7,7 @@ import {NavLink} from "react-router-dom";
 import {API_URL} from "../../../config";
 
 const Users = (props) => {
+    console.log(props.users)
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
     let minUsers = 0;
     let pages = [];
@@ -54,19 +55,19 @@ const Users = (props) => {
         {
             props.isFetching ? <Preloader/> : <div className={`${style.users_wrapper}`}>
                 {
-                    props.users.length > 0 && props.users[0].map(u => <div className={style.user_block} key={u._id}>
+                    props.users.length > 0 && props.users.map(u => <div className={style.user_block} key={u.id}>
                             <div>
 
-                                <NavLink to={'/profile/' + u._id}>
+                                <NavLink to={'/profile/' + u.id}>
                                     {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
                                     <img className={style.user_photo}
                                          src={u.photo !== "" ? `${API_URL}\\${u.photo}` : userPhoto}
                                          alt="no image"/>
                                 </NavLink>
-                                {props.userId !== u._id &&
+                                {props.userId !== u.id &&
                                 <div className={style.user_block_follow_block}>
                                     {
-                                        u.followed ?
+                                        u.followed === true ?
 
                                             <button disabled={props.followingProcessing.some(id => id === u.id)}
                                                     className={`${style.user_block_follow_button} ${style.user_block_unfollow}`}
@@ -79,7 +80,7 @@ const Users = (props) => {
                             </div>
                             <div className={style.user_info_block}>
                                 <div>
-                                    <NavLink to={'/profile/' + u._id}>
+                                    <NavLink to={'/profile/' + u.id}>
                                         <p className={`${style.user_info_name}`}>{u.name}</p>
                                     </NavLink>
                                     <p className={style.user_info_status}>{u.status ? u.status : 'No status yet...'}</p>

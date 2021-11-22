@@ -1,4 +1,4 @@
-import {usersAPI} from "../api/api";
+import {profileAPI, usersAPI} from "../api/api";
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -42,7 +42,7 @@ const usersReducer = (state = initialState, action) => {
                 })
             }
         case SET_USERS: {
-            return {...state, users: action.users}
+            return {...state, users: action.users[0]}
         }
         case SET_CURRENT_PAGE: {
             return {...state, currentPage: action.currentPage}
@@ -90,8 +90,8 @@ export const requestUsers = (currentPage, pageSize) => {
 export const follow = (userId) => {
     return (dispatch) => {
         dispatch(toggleFollowing(true, userId));
-        usersAPI.follow(userId).then(data => {
-            if (data.resultCode === 0) {dispatch(followSuccess(userId));}
+        profileAPI.follow(userId).then(data => {
+            if (data.resultCode === "0") {dispatch(followSuccess(userId));}
             dispatch(toggleFollowing(false, userId));
         })
     }
@@ -100,8 +100,8 @@ export const follow = (userId) => {
 export const unfollow = (userId) => {
     return (dispatch) => {
         dispatch(toggleFollowing(true, userId));
-        usersAPI.unfollow(userId).then(data => {
-            if (data.resultCode === 0) {dispatch(unfollowSuccess(userId));}
+        profileAPI.unfollow(userId).then(data => {
+            if (data.resultCode === "0") {dispatch(unfollowSuccess(userId));}
             dispatch(toggleFollowing(false, userId));
         })
     }

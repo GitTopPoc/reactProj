@@ -7,16 +7,22 @@ const ProfileStatus = (props) => {
     const [status,setStatus] = useState(props.status)
     const [symbolsLeft, setSymbolsLeft] = useState(300)
     let statusInputRef = useRef(status);
-
-
+    const getCurrentId = () => {
+        let currentId = window.location.href
+        currentId = currentId.split('/')
+        currentId = currentId[currentId.length - 1]
+        return currentId
+    }
     useEffect(()=> {
         setStatus(props.status);
     }, [props.status])
 
 
     const activateEditMode = () => {
-        setEditMode(true)
-        statusInputRef.current = status;
+      if (getCurrentId() === props.userId) {
+          setEditMode(true)
+          statusInputRef.current = status;
+      }
     }
 
     const deactivateEditMode = ()  => {

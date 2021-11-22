@@ -44,16 +44,16 @@ const Profile = (props) => {
                         <p className={style.social_links_text}>Social links</p>
                         <div className={style.profile_info}>
                             {props.profile.contacts.github &&
-                            <a target={"_blank"} href={props.profile.contacts.github}> <img className={style.contact_image}
+                            <a target={"_blank"} href={props.profile.contacts.github} rel="noreferrer"> <img className={style.contact_image}
                                                                           src={`${githubLogo}`} alt="not found"/></a>}
                             {props.profile.contacts.facebook &&
-                            <a target={"_blank"} href={props.profile.contacts.facebook}> <img className={style.contact_image}
+                            <a target={"_blank"} href={props.profile.contacts.facebook} rel="noreferrer"> <img className={style.contact_image}
                                                                             src={`${facebookLogo}`}
                                                                             alt="not found"/></a>}
                             {props.profile.contacts.linkedin &&
-                            <a target={"_blank"} href={props.profile.contacts.linkedin}><img className={style.contact_image} src={`${linkedinLogo}`} alt="not found"/></a>}
+                            <a target={"_blank"} href={props.profile.contacts.linkedin} rel="noreferrer"><img className={style.contact_image} src={`${linkedinLogo}`} alt="not found"/></a>}
                             {props.profile.contacts.instagram &&
-                            <a target={"_blank"} href={props.profile.contacts.instagram}><img className={style.contact_image} src={`${instaLogo}`} alt="not found"/></a>}
+                            <a target={"_blank"} href={props.profile.contacts.instagram} rel="noreferrer"><img className={style.contact_image} src={`${instaLogo}`} alt="not found"/></a>}
                         </div>
 
                     </div>}
