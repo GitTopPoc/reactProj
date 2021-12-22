@@ -13,11 +13,12 @@ router.get(`/`, authMiddleware,
                 skipValue = (page-1)*count;
             }
             let limit = Number(req.query.count)
-            const user = await User.findOne({id: req.user.id})
+            const user = await User.findById(req.user.id)
             const users = await User.find().sort({_id:-1}).skip(skipValue).limit(limit);
-            const totalCount = await User.count()
+            const totalCount = await User.countDocuments()
             let newUsers =  [];
             let check = {}
+
             if (!user) {
                 return res.statusCode(404).json({
                     message: "User not found"

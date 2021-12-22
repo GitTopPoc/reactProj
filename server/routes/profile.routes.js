@@ -36,7 +36,7 @@ router.patch('/status', authMiddleware,
 
         try {
 
-            const user = await User.findOne({id: req.user.id})
+            const user = await User.findById(req.user.id)
 
             if (!user) {
                 return res.json({
@@ -71,7 +71,7 @@ router.get('/getstatus', authMiddleware, async (req, res) => {
 router.patch('/update-profile', authMiddleware, async (req, res) => {
 
     try {
-        const user = await User.findOne({id: req.user.id})
+        const user = await User.findById(req.user.id)
 
         if (!user) {
             return res.json({
@@ -108,7 +108,7 @@ router.delete('/avatar', authMiddleware, fileController.deleteAvatar)
 router.post('/follow/:userId', authMiddleware, async (req, res) => {
 
     try {
-        const user = await User.findOne({id: req.user.id})
+        const user = await User.findById(req.user.id)
         let alreadySub = false;
         if (!user) {
             return res.statusCode(404).json({
@@ -122,7 +122,7 @@ router.post('/follow/:userId', authMiddleware, async (req, res) => {
         })
         if (alreadySub === false) {
             user.following.unshift(req.params.userId)
-            user.save();
+            await user.save();
         } else {
             return res.status(400).json({
                     message: "Already subscribed!"
@@ -130,7 +130,7 @@ router.post('/follow/:userId', authMiddleware, async (req, res) => {
                 }
             )
         }
-        return res.json({
+        return res.json( {
                 resultCode: "0",
                 message: "Followed successfully!"
 
@@ -145,7 +145,7 @@ router.post('/follow/:userId', authMiddleware, async (req, res) => {
 router.delete('/follow/:userId', authMiddleware, async (req, res) => {
 
     try {
-        const user = await User.findOne({id: req.user.id})
+        const user = await User.findById(req.user.id)
         let alreadySub = false;
         if (!user) {
             return res.statusCode(404).json({
@@ -160,7 +160,7 @@ router.delete('/follow/:userId', authMiddleware, async (req, res) => {
         })
         if (alreadySub === true) {
             user.following.shift(req.params.userId)
-            user.save();
+            await user.save();
         } else {
             return res.status(400).json({
                     message: "Not subscribed!"

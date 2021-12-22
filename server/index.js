@@ -20,7 +20,7 @@ app.use(express.static('static'))
 const start =  async () =>{
     try {
         console.log("Server starting...")
-        await mongoose.connect(config.get("dbUrl"))
+        await mongoose.connect(config.get("dbUrl"), {useNewUrlParser: true, useUnifiedTopology: true})
         console.log("Connecting to DB")
         app.listen(PORT, () => {
             console.log("Server started on port: ", PORT)

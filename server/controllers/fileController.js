@@ -6,9 +6,11 @@ const fs = require('fs')
 class FileController {
     async uploadAvatar(req, res) {
         try {
+            console.log(req.files)
             const file = req.files.file
             const user = await User.findById(req.user.id)
-            const avatarName = Uuid.v4() + ".jpg"
+            const avatarName = Uuid.v4() + ".jpeg"
+            console.log("check: " + config.get('staticPath'))
             await file.mv(config.get('staticPath') + "\\" + avatarName)
             user.photo = avatarName
             await user.save()
@@ -20,6 +22,7 @@ class FileController {
                 }
             )
         } catch (e) {
+            console.log(e)
             return res.status(400).json({message: "Upload error"})
         }
     }

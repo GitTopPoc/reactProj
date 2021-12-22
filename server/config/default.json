@@ -1,6 +1,7 @@
 {
   "serverPort": 5000,
-  "dbUrl": "mongodb+srv://admin:asdwasd@cluster0.aldiq.mongodb.net/socialDB?retryWrites=true&w=majority ",
+  "dbUrl": "mongodb+srv://admin:asdwasd@cluster0.aldiq.mongodb.net/socialDB?retryWrites=true ",
   "secretKey": "5SengoyEmSqCvkhs_tHFuHuVgEcPpE2PMRy1PR2V5pUFoboLGlkaJ8oCw0CfiXtx3T9lUd-si2BFNd8hFYNWipA-otDeqwoa9ic6xTkiCEnsN5GvJ0md4DacpggnK6gQnc8Yy29zoXcjCWbiSWoVvBNzeA0e7Je4Zm7TWGcGeA8",
-  "staticPath": "C:\\Users\\wildf\\Desktop\\WEB\\reactProjects\\react-project\\server\\static"
+  "staticPath": "C:\\Users\\wildf\\OneDrive\\Desktop\\WEB\\reactProj\\server\\static"
+
 }
