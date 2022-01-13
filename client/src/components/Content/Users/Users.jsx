@@ -7,7 +7,6 @@ import {NavLink} from "react-router-dom";
 import {API_URL} from "../../../config";
 
 const Users = (props) => {
-    console.log(props.users)
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
     let minUsers = 0;
     let pages = [];

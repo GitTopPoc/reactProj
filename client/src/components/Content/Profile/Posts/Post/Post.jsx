@@ -1,10 +1,11 @@
 import React from "react";
 import style from "./style.module.css";
 import ms from "../../../../../mainStyles/ms.module.css";
-import profilePhoto from "../../../../../assets/image/default-image.jpg";
+import userPhoto from "../../../../../assets/image/default-image.jpg";
+import {API_URL} from "../../../../../config";
 
 const Post = (props) => {
-    let postsElements = props.profilePage.posts.map(p => <PostElement profile={props.profile} id={p.id} message={p.message}/>);
+    let postsElements = props.profilePage.posts.map(p => <PostElement profile={props.profilePage.profile} message={p.text}/>);
     return (
         <div className={style.posts_area}>
             {postsElements}
@@ -18,8 +19,8 @@ const PostElement = (props) => {
         <div className={style.post}>
             <div className={style.post_author}>
                 <img className={style.profile_photo}
-                     src={profilePhoto}
-                     alt="ava"/>
+                     src={props.profile.photo === "" ? userPhoto : `${API_URL + props.profile.photo}`}
+                     alt="not found"/>
                 <p className={ms.regular_text}>{props.profile.fullName}</p>
             </div>
             <p className={style.post_text}>{props.message}</p>

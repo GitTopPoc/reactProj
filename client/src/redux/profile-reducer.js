@@ -1,35 +1,28 @@
 import {profileAPI} from "../api/api";
 
-const ADD_POST = 'ADD_POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const GET_STATUS = 'GET_STATUS';
+const SET_POSTS = 'SET_POSTS';
 
 let initialState = {
     posts: [
-        {id: 1, message: 'Hey there'},
+       /* {id: 1, message: 'Hey there'},
         {id: 2, message: 'Hello'},
         {id: 3, message: 'Hi'},
         {id: 4, message: 'Privet'},
-        {id: 5, message: 'Message'},
+        {id: 5, message: 'Message'},*/
     ],
     profile:null,
     status: ""
 }
 
 const profileReducer = (state = initialState, action) => {
-    let newId = state.posts.length + 1;
     switch (action.type) {
-        case ADD_POST:
-            let newPost = {
-                id: newId,
-                message: action.text
-            }
-            let stateCopy = {...state};
-            stateCopy.posts = [...state.posts];
-            stateCopy.posts.push(newPost);
-            return stateCopy;
         case SET_USER_PROFILE : {
             return {...state, profile: action.text}
+        }
+        case SET_POSTS : {
+            return {...state, posts: action.posts}
         }
         case GET_STATUS : {
             return {...state, status: action.status}
@@ -40,9 +33,26 @@ const profileReducer = (state = initialState, action) => {
 
 
 };
-export const addPost = (text) => ({type: ADD_POST, text: text});
+export const setPosts = (posts) => ({type: SET_POSTS, posts});
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, text: profile});
 export const getStatus = (status) => ({type: GET_STATUS, status});
+
+/*
+export const addUserPost = (postText) => {
+    return (dispatch) => {
+        profileAPI.addPost(postText).then(data => {
+
+        })
+    }
+}
+*/
+export const getProfilePosts = (userId) => {
+    return (dispatch) => {
+        profileAPI.getPosts(userId).then(data => {
+            dispatch(setPosts(data));
+        })
+    }
+}
 
 export const getMyProfile = (userId) => {
     return (dispatch) => {

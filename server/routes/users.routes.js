@@ -37,8 +37,6 @@ router.get(`/`, authMiddleware,
                     }
 
                 })
-
-
                 newUsers.push(check)
 
             })

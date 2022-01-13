@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import style from "./style.module.css";
 import ms from "../../../../mainStyles/ms.module.css";
 import Post from "./Post/Post";
@@ -22,25 +22,24 @@ const addPostForm = (props) => {
 
 const AddPostReduxForm = reduxForm({form: 'addPost'})(addPostForm)
 
-class Posts extends React.Component {
-
-    render() {
-
-        const onSubmit = (formData) => {
-            this.props.addPost(formData.newPostText);
-        }
-        return (
-            <div className={ms.block_container}>
-                <div className={style.creating_post}>
-                    <p className={style.my_posts_heading}>My Posts</p>
-                    <AddPostReduxForm onSubmit={onSubmit}/>
-                    <check/>
-                </div>
-
-                <Post profilePage={this.props.profilePage} profile={this.props.profile}/>
-            </div>
-        )
+const Posts = (props) => {
+    useEffect(() => {
+        props.getProfilePosts(props.profilePage.profile.userId)
+    }, [props.profilePage.profile.userId])
+    let onSubmit = (formData) => {
+        /*props.addPost(formData.newPostText)*/
+        alert(formData.newPostText)
     }
-}
+    return <div>
+        <div className={ms.block_container}>
+            <div className={style.creating_post}>
+                <p className={style.my_posts_heading}>Posts</p>
+                {props.profilePage.profile.userId === props.auth.userId && <AddPostReduxForm onSubmit={onSubmit}/>}
+                <check/>
+            </div>
+            <Post profilePage={props.profilePage}/>
+        </div>
+    </div>
 
+}
 export default Posts;

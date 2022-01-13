@@ -11,7 +11,6 @@ import {
     getStateTotalUsersCount,
     getStateUsers
 } from "../../../redux/users-selectors";
-import {getStateProfile} from "../../../redux/profile-selector";
 import {getStateUserId} from "../../../redux/auth-selector";
 
 
