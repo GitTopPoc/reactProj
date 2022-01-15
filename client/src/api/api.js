@@ -54,6 +54,11 @@ export const profileAPI = {
             return response.data.posts;
         })
     },
+    createPost(postText) {
+        return instance.post(`posts/add-post`, {postText}).then(response => {
+            return response.data;
+        })
+    },
     getStatus(userId) {
         return instance.get(`profile/getstatus?userId=${userId}`)
     },

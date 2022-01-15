@@ -5,13 +5,7 @@ const GET_STATUS = 'GET_STATUS';
 const SET_POSTS = 'SET_POSTS';
 
 let initialState = {
-    posts: [
-       /* {id: 1, message: 'Hey there'},
-        {id: 2, message: 'Hello'},
-        {id: 3, message: 'Hi'},
-        {id: 4, message: 'Privet'},
-        {id: 5, message: 'Message'},*/
-    ],
+    posts: [],
     profile:null,
     status: ""
 }
@@ -24,6 +18,7 @@ const profileReducer = (state = initialState, action) => {
         case SET_POSTS : {
             return {...state, posts: action.posts}
         }
+
         case GET_STATUS : {
             return {...state, status: action.status}
         }
@@ -37,15 +32,17 @@ export const setPosts = (posts) => ({type: SET_POSTS, posts});
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, text: profile});
 export const getStatus = (status) => ({type: GET_STATUS, status});
 
-/*
-export const addUserPost = (postText) => {
-    return (dispatch) => {
-        profileAPI.addPost(postText).then(data => {
 
+export const createPost = (postText) => {
+    return (dispatch) => {
+        profileAPI.createPost(postText).then(data => {
+        if (data.resultCode === "0") {
+            dispatch(setPosts(data.posts))
+        }
         })
     }
 }
-*/
+
 export const getProfilePosts = (userId) => {
     return (dispatch) => {
         profileAPI.getPosts(userId).then(data => {

@@ -27,9 +27,10 @@ router.post('/add-post', authMiddleware, async (req, res) => {
         const likesCount = 0;
         const post = new Post({authorId, text, time, date, likedBy, likesCount})
         await post.save()
+        let posts = await Post.find({'authorId': `${user.id}`}).sort({_id:-1});
         return res.json({
             resultCode: "0",
-            message: "Post was created successfully"
+            posts
         })
     } catch (e) {
         console.log(e);
@@ -42,7 +43,7 @@ router.get('/:userId', authMiddleware,
     async (req, res) => {
         try {
             const user = await User.findById(req.params.userId)
-            let posts = await Post.find({'authorId': `${user.id}`});
+            let posts = await Post.find({'authorId': `${user.id}`}).sort({_id:-1});
             return res.json({
                 resultCode: "0",
                 posts
