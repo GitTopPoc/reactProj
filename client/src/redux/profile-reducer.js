@@ -33,9 +33,9 @@ export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, text: profi
 export const getStatus = (status) => ({type: GET_STATUS, status});
 
 
-export const createPost = (postText) => {
+export const createPost = (formData) => {
     return (dispatch) => {
-        profileAPI.createPost(postText).then(data => {
+        profileAPI.createPost(formData).then(data => {
         if (data.resultCode === "0") {
             dispatch(setPosts(data.posts))
         }

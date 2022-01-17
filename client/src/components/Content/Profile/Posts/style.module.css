@@ -38,4 +38,67 @@
   color: #68ff97;
 }
 
+.drag_test {
+  border: red solid 2px;
+}
+
+.photo_input {
+  display: block;
+}
+
+.drag_drop_block {
+  background: rgba(128, 127, 127, 0.37);
+  padding: 30px 15px;
+  cursor: pointer;
+}
+.drag_drop_block p {
+  font-size: 20px;
+  text-align: center;
+  color: #807f7f;
+}
+
+.drag_drop_true {
+  background: rgba(255, 255, 255, 0.37) !important;
+  border: dashed 2px #ffffff;
+}
+.drag_drop_true p {
+  color: #ffffff;
+}
+
+.remove_photo_icon {
+  color: #61dafb;
+  font-size: 20px;
+  transition: 0.3s;
+  cursor: pointer;
+  margin: 4px 0 0 10px;
+}
+.remove_photo_icon:hover {
+  color: #8774e1;
+}
+
+.post_photo {
+  border: solid 2px #ffffff;
+  padding: 4px 10px;
+  max-width: 284px;
+  display: flex;
+  margin: 4px 0;
+}
+.post_photo p {
+  max-width: 270px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 20px;
+  line-height: 25px;
+  color: #ffffff;
+}
+
+.invisible {
+  display: none !important;
+}
+
+.inline {
+  display: inline-block;
+}
+
 /*# sourceMappingURL=style.module.css.map */

@@ -1,19 +1,75 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import style from "./style.module.css";
 import ms from "../../../../mainStyles/ms.module.css";
 import Post from "./Post/Post";
 import {useForm} from "react-hook-form";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faWindowClose} from "@fortawesome/free-solid-svg-icons";
 
 const AddPostForm = (props) => {
     const {register, handleSubmit} = useForm();
+    const [dragedOver, setDragedOver] = useState([false]);
+    const [postPhoto, setPostPhoto] = useState(false);
 
     let formSubmit = (data) => {
-        props.props.createPost(data.newPostText);
-
+    console.log(postPhoto)
+        const formData = new FormData();
+        formData.append('file', postPhoto[0])
+        if (!postPhoto) {
+            formData.set('file', null)
+        }
+        formData.append('text', data.newPostText)
+        props.createPost(formData);
+        for (var value of formData.values()) {
+            console.log(value);
+        }
     }
-    return <form onSubmit={handleSubmit(formSubmit)}>
+
+    const dragOver = (e) => {
+        setDragedOver(true)
+        e.preventDefault();
+    }
+
+    const dragEnter = (e) => {
+        e.preventDefault();
+        setDragedOver(true)
+    }
+
+    const dragLeave = (e) => {
+        setDragedOver(false)
+        e.preventDefault();
+    }
+
+    const fileDrop = (e) => {
+        setDragedOver(false)
+        e.preventDefault();
+        const files = e.dataTransfer.files;
+        setPostPhoto(files)
+        console.log(files);
+    }
+    let cancelPhoto = () => {
+        setPostPhoto(false)
+    }
+
+    return <form
+        onSubmit={handleSubmit(formSubmit)}>
         <textarea {...register("newPostText")} className={style.post_text}
                   name={"newPostText"} placeholder={"Tell us something..."}/>
+        <div
+            onDragOver={dragOver}
+            onDragEnter={dragEnter}
+            onDragLeave={dragLeave}
+            onDrop={fileDrop}
+
+            className={`${style.drag_drop_block} ${dragedOver === true && style.drag_drop_true} ${postPhoto !== false && style.invisible}`}>
+            <p>Drag and drop photo or click to upload</p>
+        </div>
+           <div className={style.inline}>
+               <div className={`${style.post_photo} ${postPhoto === false && style.invisible}`}>
+                   <p>{postPhoto !== false && postPhoto[0].name}</p>
+                   <span onClick={cancelPhoto} className={style.remove_photo_icon}><FontAwesomeIcon icon={faWindowClose}/></span>
+               </div>
+           </div>
         <button type={"submit"} className={style.create_post_button}>Send</button>
     </form>
 }
@@ -22,12 +78,13 @@ const AddPostForm = (props) => {
 const Posts = (props) => {
     useEffect(() => {
         props.getProfilePosts(props.profilePage.profile.userId)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.profilePage.profile.userId])
     return <div>
         <div className={ms.block_container}>
             <div className={style.creating_post}>
                 <p className={style.my_posts_heading}>Posts</p>
-                {props.profilePage.profile.userId === props.auth.userId && <AddPostForm props={props}/>}
+                {props.profilePage.profile.userId === props.auth.userId && <AddPostForm {...props}/>}
                 <check/>
             </div>
             <Post profilePage={props.profilePage}/>

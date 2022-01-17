@@ -54,9 +54,11 @@ export const profileAPI = {
             return response.data.posts;
         })
     },
-    createPost(postText) {
-        return instance.post(`posts/add-post`, {postText}).then(response => {
-            return response.data;
+    createPost(formData) {
+        return axios.post(`${API_URL}api/posts/add-post`, formData,
+            {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}
+        ).then(response => {
+            return response.data
         })
     },
     getStatus(userId) {

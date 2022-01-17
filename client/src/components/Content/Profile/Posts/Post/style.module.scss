@@ -17,10 +17,6 @@
 
 .posts_area {
   color: antiquewhite;
-
-  img {
-    max-width: 50px;
-  }
 }
 
 .post_text {
@@ -38,4 +34,10 @@
   object-fit: cover;
   height: 50px;
   width: 50px;
+}
+
+.post_photo {
+  max-width: 100%;
+  max-height: 600px;
+
 }

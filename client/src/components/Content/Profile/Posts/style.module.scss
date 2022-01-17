@@ -44,3 +44,66 @@
 }
 
 
+.drag_test {
+  border: red solid 2px;
+}
+
+.photo_input {
+  display: block;
+}
+
+.drag_drop_block {
+  background: rgba(128, 127, 127, 0.37);
+  padding: 30px 15px;
+  cursor: pointer;
+  p {
+    font-size: 20px;
+    text-align: center;
+    color: rgb(128, 127, 127);
+  }
+}
+
+.drag_drop_true {
+  background: rgba(255, 255, 255, 0.37) !important;
+  border: dashed 2px #ffffff;
+  p {
+    color: #ffffff;
+  }
+}
+
+.remove_photo_icon {
+  color: rgb(97, 218, 251);
+  font-size: 20px;
+  transition: .3s;
+  cursor: pointer;
+  margin: 4px 0 0 10px;
+  &:hover {
+    color: rgb(135, 116, 225);
+  }
+}
+
+.post_photo {
+  border: solid 2px #ffffff;
+  padding: 4px 10px;
+  max-width: 284px;
+  display: flex;
+  margin: 4px 0;
+  p{
+    max-width: 270px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 20px;
+    line-height: 25px;
+    color: #ffffff;
+  }
+}
+
+.invisible {
+  display: none !important;
+}
+
+.inline {
+  display: inline-block;
+}
+

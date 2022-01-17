@@ -1,12 +1,14 @@
 const {Schema, model} = require("mongoose")
 
-const Post = new Schema ({
+const Post = new Schema({
     authorId: {type: String},
     text: {type: String},
     time: {type: String},
     date: {type: String},
+    photo: {type: String},
     likedBy: [{type: String}],
-    likesCount: {type: Number}
+    likesCount: {type: Number},
+
 
 })
 

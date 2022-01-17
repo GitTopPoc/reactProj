@@ -3,41 +3,12 @@ const Post = require("../models/Post")
 const User = require("../models/User")
 const router = new Router()
 const authMiddleware = require("../middleware/auth.middleware")
-
-router.post('/add-post', authMiddleware, async (req, res) => {
-
-    try {
-        const {postText} = req.body;
-        const user = await User.findById(req.user.id)
-        Data = new Date();
-        Year = Data.getFullYear();
-        Month = Data.getMonth();
-        Day = Data.getDate();
-        Hour = Data.getHours();
-        Minutes = Data.getMinutes();
-        postDate = Day + "." + Month + 1;
-        postTime = Hour + ":" + Minutes;
+const fileController = require("../controllers/fileController");
 
 
-        const authorId = user.id;
-        const text = postText;
-        const time = postTime;
-        const date = postDate;
-        const likedBy = [];
-        const likesCount = 0;
-        const post = new Post({authorId, text, time, date, likedBy, likesCount})
-        await post.save()
-        let posts = await Post.find({'authorId': `${user.id}`}).sort({_id:-1});
-        return res.json({
-            resultCode: "0",
-            posts
-        })
-    } catch (e) {
-        console.log(e);
-        req.send({message: `${e}`})
-    }
 
-})
+router.post('/add-post', authMiddleware, fileController.addPost)
+
 
 router.get('/:userId', authMiddleware,
     async (req, res) => {

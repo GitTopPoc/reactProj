@@ -5,7 +5,7 @@ import userPhoto from "../../../../../assets/image/default-image.jpg";
 import {API_URL} from "../../../../../config";
 
 const Post = (props) => {
-    let postsElements = props.profilePage.posts.map(p => <PostElement profile={props.profilePage.profile} message={p.text}/>);
+    let postsElements = props.profilePage.posts.map(p => <PostElement profile={props.profilePage.profile} message={p.text} photo={p.photo}/>);
     return (
         <div className={style.posts_area}>
             {postsElements}
@@ -24,6 +24,7 @@ const PostElement = (props) => {
                 <p className={ms.regular_text}>{props.profile.fullName}</p>
             </div>
             <p className={style.post_text}>{props.message}</p>
+            {props.photo !== "none" && <img className={style.post_photo} src={`${API_URL + props.photo}`} alt="not found"/>}
         </div>
     )
 }
