@@ -10,9 +10,9 @@ const AddPostForm = (props) => {
     const {register, handleSubmit} = useForm();
     const [dragedOver, setDragedOver] = useState([false]);
     const [postPhoto, setPostPhoto] = useState(false);
+    let postText = document.getElementById("newPostText");
 
     let formSubmit = (data) => {
-    console.log(postPhoto)
         const formData = new FormData();
         formData.append('file', postPhoto[0])
         if (!postPhoto) {
@@ -20,9 +20,8 @@ const AddPostForm = (props) => {
         }
         formData.append('text', data.newPostText)
         props.createPost(formData);
-        for (var value of formData.values()) {
-            console.log(value);
-        }
+        setPostPhoto(false);
+        postText.value = null;
     }
 
     const dragOver = (e) => {
@@ -45,31 +44,48 @@ const AddPostForm = (props) => {
         e.preventDefault();
         const files = e.dataTransfer.files;
         setPostPhoto(files)
-        console.log(files);
     }
     let cancelPhoto = () => {
         setPostPhoto(false)
     }
 
+
+    let imageUpload = document.getElementById("file_upload");
+    if (imageUpload) {
+        imageUpload.onchange = function () {
+            let input = this.files[0];
+            if (input) {
+                setPostPhoto(imageUpload.files)
+            }
+        };
+    }
+    let fileClick = () => {
+        imageUpload.click();
+    }
+
+
     return <form
         onSubmit={handleSubmit(formSubmit)}>
         <textarea {...register("newPostText")} className={style.post_text}
-                  name={"newPostText"} placeholder={"Tell us something..."}/>
+                  name={"newPostText"} id={"newPostText"} placeholder={"Tell us something..."}/>
         <div
             onDragOver={dragOver}
             onDragEnter={dragEnter}
             onDragLeave={dragLeave}
             onDrop={fileDrop}
-
+            onClick={fileClick}
             className={`${style.drag_drop_block} ${dragedOver === true && style.drag_drop_true} ${postPhoto !== false && style.invisible}`}>
             <p>Drag and drop photo or click to upload</p>
         </div>
-           <div className={style.inline}>
-               <div className={`${style.post_photo} ${postPhoto === false && style.invisible}`}>
-                   <p>{postPhoto !== false && postPhoto[0].name}</p>
-                   <span onClick={cancelPhoto} className={style.remove_photo_icon}><FontAwesomeIcon icon={faWindowClose}/></span>
-               </div>
-           </div>
+        <input accept={"image/*"} name="file" type={"file"} id={"file_upload"}
+               className={`${style.form_input} ${style.file_input} ${style.invisible}`}
+               {...register("file")}  />
+        <div className={style.inline}>
+            <div className={`${style.post_photo} ${postPhoto === false && style.invisible}`}>
+                <p>{postPhoto !== false && postPhoto[0].name}</p>
+                <span onClick={cancelPhoto} className={style.remove_photo_icon}><FontAwesomeIcon icon={faWindowClose}/></span>
+            </div>
+        </div>
         <button type={"submit"} className={style.create_post_button}>Send</button>
     </form>
 }

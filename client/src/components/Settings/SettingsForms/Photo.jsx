@@ -25,14 +25,6 @@ let Photo = (props) => {
             }, 20000);
     }, [props.state.settings.avatarChangeMessage]);
 
-    useEffect(() => {
-       console.log(props.state.settings.photo)
-    }, [props.state.settings.photo])
-    const check = (e) => {
-        let file = e.target
-        console.log(file)
-    }
-
     const deletePhoto = () => {
         props.deleteAvatar()
     }
@@ -47,7 +39,7 @@ let Photo = (props) => {
             </div>
             <div className={style.form_field}>
                 <div className={style.required_block}>
-                        <input onChange={e => {check(e)}} accept={"image/*"} name="file" type={"file"} id={"file_upload"}
+                        <input accept={"image/*"} name="file" type={"file"} id={"file_upload"}
                                className={`${style.form_input} ${style.file_input}`}
                                {...register("file")} />
                     {errors.file && errors.file.type === "required" &&
