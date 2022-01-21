@@ -41,3 +41,34 @@
   max-height: 600px;
 
 }
+
+
+.like_icon {
+  font-size: 24px;
+  cursor: pointer;
+  transition: .3s;
+  &:hover {
+    transform: scale(1.2);
+  }
+  &:active {
+    color: #ffffff;
+  }
+}
+
+.likes_count {
+  font-size: 24px;
+  margin:  0 0 0 10px;
+  user-select: none;
+}
+
+.like_active {
+  color: red;
+}
+
+.post_info_wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.likes_wrapper {
+  display: flex;
+}

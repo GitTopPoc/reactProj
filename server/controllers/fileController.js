@@ -29,7 +29,7 @@ class FileController {
     async deleteAvatar(req, res) {
         try {
             const user = await User.findById(req.user.id)
-            fs.unlinkSync(config.get('staticPath')+ "\\" + user.photo)
+            fs.unlinkSync(config.get('staticPath') + "\\" + user.photo)
             user.photo = "";
             await user.save()
             return res.json(
@@ -59,7 +59,6 @@ class FileController {
             let photo = "none";
 
 
-
             const authorId = user.id;
             const text = postText;
             const time = postTime;
@@ -67,7 +66,7 @@ class FileController {
             const likedBy = [];
             const likesCount = 0;
 
-            if(req.files) {
+            if (req.files) {
                 const file = req.files.file
                 photo = Uuid.v4() + ".jpeg"
                 await file.mv(config.get('staticPath') + "\\" + photo)
@@ -76,10 +75,40 @@ class FileController {
             const post = new Post({authorId, text, time, date, photo, likedBy, likesCount})
             console.log(post)
             await post.save()
-            let posts = await Post.find({'authorId': `${user.id}`}).sort({_id:-1});
+            let posts = await Post.find({'authorId': `${user.id}`}).sort({_id: -1});
+
+            let newPosts = [];
+            let check = {}
+
+            if (!user) {
+                return res.statusCode(404).json({
+                    message: "User not found"
+                })
+            }
+            posts.map(post => {
+                check = {};
+                check["authorId"] = post.authorId;
+                check["text"] = post.text;
+                check["time"] = post.time;
+                check["date"] = post.date;
+                check["photo"] = post.photo;
+                check["likedBy"] = post.likedBy;
+                check["liked"] = false;
+                check["likesCount"] = post.likesCount;
+                check["id"]= post.id;
+
+                post.likedBy.map(m => {
+                    if (m === user.id) {
+                        check["liked"] = true
+                    }
+
+                })
+                newPosts.push(check)
+
+            })
             return res.json({
                 resultCode: "0",
-                posts
+                posts: newPosts
             })
         } catch (e) {
             console.log(e);

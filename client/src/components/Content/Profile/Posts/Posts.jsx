@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import style from "./style.module.css";
 import ms from "../../../../mainStyles/ms.module.css";
 import Post from "./Post/Post";
@@ -103,7 +103,7 @@ const Posts = (props) => {
                 {props.profilePage.profile.userId === props.auth.userId && <AddPostForm {...props}/>}
                 <check/>
             </div>
-            <Post profilePage={props.profilePage}/>
+            <Post likePost={props.likePost} profilePage={props.profilePage}/>
         </div>
     </div>
 

@@ -43,6 +43,19 @@ export const createPost = (formData) => {
     }
 }
 
+export const likePost = (postId, userId) => {
+    return (dispatch) => {
+        profileAPI.likePost(postId, userId).then(data => {
+            if (data.resultCode === "0") {
+                profileAPI.getPosts(userId).then(data => {
+                    dispatch(setPosts(data));
+                })
+            }
+        })
+    }
+}
+
+
 export const getProfilePosts = (userId) => {
     return (dispatch) => {
         profileAPI.getPosts(userId).then(data => {

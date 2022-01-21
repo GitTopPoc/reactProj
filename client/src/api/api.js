@@ -61,6 +61,11 @@ export const profileAPI = {
             return response.data
         })
     },
+    likePost(postId, userId) {
+        return instance.post('/posts/like', {postId, userId}).then(response => {
+            return response.data;
+        })
+    },
     getStatus(userId) {
         return instance.get(`profile/getstatus?userId=${userId}`)
     },

@@ -57,10 +57,12 @@ export const login = (email, password) => {
     }
 }
 
+
 export const logout = () => {
     return (dispatch) => {
         dispatch(setUserData(null, null, null, false));
         localStorage.removeItem('token');
+
     }
 }
 
