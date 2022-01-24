@@ -49,6 +49,7 @@ export const login = (email, password) => {
             if (data.resultCode === "0") {
                 localStorage.setItem('token', data.token);
                 dispatch(setUserData(data.user.id, data.user.email, data.user.name, true));
+                window.location.reload();
             } else {
                 let message = data.message;
                 dispatch(stopSubmit("auth", {_error: message}));
@@ -62,7 +63,7 @@ export const logout = () => {
     return (dispatch) => {
         dispatch(setUserData(null, null, null, false));
         localStorage.removeItem('token');
-
+        window.location.reload();
     }
 }
 

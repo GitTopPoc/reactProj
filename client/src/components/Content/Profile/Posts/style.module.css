@@ -52,6 +52,7 @@
   cursor: pointer;
 }
 .drag_drop_block p {
+  user-select: none;
   font-size: 20px;
   text-align: center;
   color: #807f7f;

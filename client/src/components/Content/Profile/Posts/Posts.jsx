@@ -96,14 +96,15 @@ const Posts = (props) => {
         props.getProfilePosts(props.profilePage.profile.userId)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.profilePage.profile.userId])
+
     return <div>
         <div className={ms.block_container}>
             <div className={style.creating_post}>
                 <p className={style.my_posts_heading}>Posts</p>
                 {props.profilePage.profile.userId === props.auth.userId && <AddPostForm {...props}/>}
-                <check/>
             </div>
-            <Post likePost={props.likePost} profilePage={props.profilePage}/>
+            <Post auth={props.auth} deletePost={props.deletePost} likePost={props.likePost}
+                  profilePage={props.profilePage}/>
         </div>
     </div>
 

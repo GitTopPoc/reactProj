@@ -21,7 +21,6 @@ class FileController {
                 }
             )
         } catch (e) {
-            console.log(e)
             return res.status(400).json({message: "Upload error"})
         }
     }
@@ -40,7 +39,6 @@ class FileController {
                 }
             )
         } catch (e) {
-            console.log(e)
             return res.status(400).json({message: 'Upload avatar error'})
         }
     }
@@ -71,9 +69,7 @@ class FileController {
                 photo = Uuid.v4() + ".jpeg"
                 await file.mv(config.get('staticPath') + "\\" + photo)
             }
-            console.log(authorId, text, time, date, photo, likedBy, likesCount)
             const post = new Post({authorId, text, time, date, photo, likedBy, likesCount})
-            console.log(post)
             await post.save()
             let posts = await Post.find({'authorId': `${user.id}`}).sort({_id: -1});
 

@@ -5,6 +5,11 @@
   margin-left: 20px;
 }
 
+.post_heading {
+  display: flex;
+  justify-content: space-between;
+}
+
 .post {
   border: 2px solid gray;
   max-width: 1000px;
@@ -12,6 +17,7 @@
   margin: 20px auto;
   padding: 10px;
   box-shadow: 0 0.6rem 1rem #00000080;
+  position: relative;
 }
 
 .posts_area {
@@ -65,10 +71,63 @@
 .post_info_wrapper {
   display: flex;
   justify-content: space-between;
+  margin: 14px 0 0 0;
 }
 
 .likes_wrapper {
   display: flex;
+}
+
+.post_menu_button {
+  transition: 0.3s;
+  font-size: 20px;
+  background: none;
+  color: antiquewhite;
+  margin: 0 10px;
+}
+
+.post_menu_button_edit:hover {
+  transform: scale(1.2);
+  color: #68ff97;
+}
+
+.post_menu_button_delete:hover {
+  transform: scale(1.2);
+  color: red;
+}
+
+.invisible {
+  display: none;
+}
+
+.delete_text {
+  background: none;
+  font-size: 20px;
+  padding: 0 10px;
+  transition: 0.3s;
+}
+
+.delete_confirm {
+  color: #68ff97;
+}
+.delete_confirm:hover {
+  transform: scale(1.2);
+}
+
+.delete_cancel {
+  color: red;
+}
+.delete_cancel:hover {
+  transform: scale(1.2);
+}
+
+.delete_buttons {
+  width: 74px;
+  margin: 7px auto 0;
+}
+
+.delete_post_text {
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.module.css.map */

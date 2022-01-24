@@ -57,6 +57,7 @@
   padding: 30px 15px;
   cursor: pointer;
   p {
+    user-select: none;
     font-size: 20px;
     text-align: center;
     color: rgb(128, 127, 127);

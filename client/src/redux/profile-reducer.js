@@ -3,10 +3,11 @@ import {profileAPI} from "../api/api";
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const GET_STATUS = 'GET_STATUS';
 const SET_POSTS = 'SET_POSTS';
+const STATE_DELETE_POST = 'STATE_DELETE_POST';
 
 let initialState = {
     posts: [],
-    profile:null,
+    profile: null,
     status: ""
 }
 
@@ -18,9 +19,17 @@ const profileReducer = (state = initialState, action) => {
         case SET_POSTS : {
             return {...state, posts: action.posts}
         }
-
         case GET_STATUS : {
             return {...state, status: action.status}
+        }
+        case STATE_DELETE_POST : {
+            let newPosts = [];
+            for (let i = 0; i < state.posts.length; i++) {
+                if (state.posts[i].id !== action.postId) {
+                    newPosts.push(state.posts[i]);
+                }
+            }
+            return {...state, posts: newPosts}
         }
         default:
             return state;
@@ -31,14 +40,25 @@ const profileReducer = (state = initialState, action) => {
 export const setPosts = (posts) => ({type: SET_POSTS, posts});
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, text: profile});
 export const getStatus = (status) => ({type: GET_STATUS, status});
+export const stateDeletePost = (postId) => ({type: STATE_DELETE_POST, postId});
 
+
+export const deletePost = (postId) => {
+    return (dispatch) => {
+        profileAPI.deletePost(postId).then(data => {
+            if (data.resultCode === "0") {
+                dispatch(stateDeletePost(postId));
+            }
+        })
+    }
+}
 
 export const createPost = (formData) => {
     return (dispatch) => {
         profileAPI.createPost(formData).then(data => {
-        if (data.resultCode === "0") {
-            dispatch(setPosts(data.posts))
-        }
+            if (data.resultCode === "0") {
+                dispatch(setPosts(data.posts))
+            }
         })
     }
 }
@@ -83,7 +103,7 @@ export const getUserStatus = (userId) => {
 export const updateUserStatus = (userId, status) => {
     return (dispatch) => {
         profileAPI.updateStatus(userId, status).then(response => {
-            if(response.data.resultCode === 0) {
+            if (response.data.resultCode === 0) {
                 dispatch(getStatus(status));
             }
         })

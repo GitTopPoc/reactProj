@@ -81,6 +81,21 @@ router.post('/like', authMiddleware, async (req, res) => {
     }
 })
 
+router.post('/delete', authMiddleware, async (req, res) => {
+
+    try {
+        const post = await Post.findById(req.body.postId)
+        post.deleteOne({"_id:": req.body.postId})
+        return res.status(200).json({
+            resultCode: "0"
+        })
+
+    } catch (e) {
+        res.send({message: `${e}`})
+    }
+})
+
+
 
 
 module.exports = router

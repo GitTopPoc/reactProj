@@ -66,6 +66,11 @@ export const profileAPI = {
             return response.data;
         })
     },
+    deletePost(postId) {
+        return instance.post('/posts/delete', {postId}).then(response => {
+            return response.data;
+        })
+    },
     getStatus(userId) {
         return instance.get(`profile/getstatus?userId=${userId}`)
     },
