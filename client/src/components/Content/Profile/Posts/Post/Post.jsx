@@ -5,6 +5,7 @@ import userPhoto from "../../../../../assets/image/default-image.jpg";
 import {API_URL} from "../../../../../config";
 import {faHeart, faEdit, faTimes, faFlag, faCheck} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import PostEdit from "./PostEdit/PostEdit";
 
 
 const Post = (props) => {
@@ -15,7 +16,8 @@ const Post = (props) => {
                                                                       profile={props.profilePage.profile}
                                                                       message={p.text} postId={p.id} liked={p.liked}
                                                                       likesCount={p.likesCount} photo={p.photo}
-                                                                      date={p.date} time={p.time}/>);
+                                                                      date={p.date} time={p.time}
+                                                                      key={p.id}/>);
     return (
         <div className={style.posts_area}>
             {postsElements}
@@ -24,11 +26,14 @@ const Post = (props) => {
 
 }
 const PostElement = (props) => {
-    const [deleteActive, setDeleteActive] = useState([false]);
+    const [deleteActive, setDeleteActive] = useState(false);
+    const [editActive, setEditActive] = useState(false);
+
 
     let liked = (props) => {
         props.likePost(props.postId, props.profileId);
     }
+
 
     return (
         <div className={style.post}>
@@ -42,7 +47,11 @@ const PostElement = (props) => {
                 <div>
                     <div
                         className={`${props.profileId !== props.auth.userId && style.invisible} ${deleteActive === true && style.invisible}`}>
-                        <button className={`${style.post_menu_button_edit} ${style.post_menu_button}`}><FontAwesomeIcon
+                        <button
+                            onClick={() => {
+                               editActive === false ? setEditActive(true) : setEditActive(false)
+                            }}
+                            className={`${style.post_menu_button_edit} ${style.post_menu_button}`}><FontAwesomeIcon
                             icon={faEdit}/></button>
                         <button onClick={() => {
                             setDeleteActive(true)
@@ -72,9 +81,20 @@ const PostElement = (props) => {
                     </div>
                 </div>
             </div>
-            <p className={style.post_text}>{props.message}</p>
-            {props.photo !== "none" &&
-                <img className={style.post_photo} src={`${API_URL + props.photo}`} alt="not found"/>}
+
+            <div className={`${editActive === true && style.invisible}`}>
+
+                <p className={style.post_text}>{props.message}</p>
+                {props.photo !== "none" &&
+                    <img className={style.post_photo} src={`${API_URL + props.photo}`} alt="not found"/>}
+            </div>
+            {/*POST EDIT*/}
+            {/*POST EDIT*/}
+            {/*POST EDIT*/}
+            <div className={`${editActive !== true && style.invisible}`}>
+                <PostEdit message={props.message} postId={props.postId} photo={props.photo}/>
+            </div>
+
             <div className={style.post_info_wrapper}>
                 <div className={style.likes_wrapper}>
                     <FontAwesomeIcon onClick={() => liked(props)}
