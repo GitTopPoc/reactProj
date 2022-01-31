@@ -10,6 +10,7 @@ import PostEdit from "./PostEdit/PostEdit";
 
 const Post = (props) => {
     let postsElements = props.profilePage.posts.map(p => <PostElement auth={props.auth}
+                                                                      editPost={props.editPost}
                                                                       profileId={props.profilePage.profile.userId}
                                                                       likePost={props.likePost}
                                                                       deletePost={props.deletePost}
@@ -28,6 +29,8 @@ const Post = (props) => {
 const PostElement = (props) => {
     const [deleteActive, setDeleteActive] = useState(false);
     const [editActive, setEditActive] = useState(false);
+
+
 
 
     let liked = (props) => {
@@ -55,7 +58,7 @@ const PostElement = (props) => {
                             icon={faEdit}/></button>
                         <button onClick={() => {
                             setDeleteActive(true)
-                        }} className={`${style.post_menu_button_delete} ${style.post_menu_button}`}>
+                        }} className={`${style.post_menu_button_delete} ${style.post_menu_button} ${editActive === true && style.invisible}`}>
                             <FontAwesomeIcon icon={faTimes}/></button>
                     </div>
                     {/* // confirm delete*/}
@@ -92,7 +95,7 @@ const PostElement = (props) => {
             {/*POST EDIT*/}
             {/*POST EDIT*/}
             <div className={`${editActive !== true && style.invisible}`}>
-                <PostEdit message={props.message} postId={props.postId} photo={props.photo}/>
+                <PostEdit removeEdit={() => {setEditActive(false)}} profileId={props.profileId} editPost={props.editPost} message={props.message} postId={props.postId} photo={props.photo}/>
             </div>
 
             <div className={style.post_info_wrapper}>

@@ -1,3 +1,85 @@
 .invisible {
-  display: none;
+  display: none !important;
+}
+
+.inline {
+  display: inline-flex;
+}
+
+.post_photo {
+  border: solid 2px #ffffff;
+  padding: 4px 10px;
+  max-width: 284px;
+  display: flex;
+  margin: 4px 0;
+  p{
+    max-width: 270px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 18px;
+    line-height: 25px;
+    color: #ffffff;
+  }
+}
+
+.remove_photo_icon {
+  color: rgb(97, 218, 251);
+  font-size: 20px;
+  transition: .3s;
+  cursor: pointer;
+  margin: 2px 0 0 10px;
+  &:hover {
+    color: rgb(135, 116, 225);
+  }
+}
+
+
+.post_text {
+  margin: 10px 0 0 0;
+  color: rgb(239, 225, 206);
+  width: 100%;
+  font-size: 20px;
+  min-height: 90px;
+  padding: 0 4px;
+  background: rgb(74, 74, 74);
+  resize: none;
+}
+
+.drag_drop_block {
+  background: rgba(128, 127, 127, 0.37);
+  padding: 30px 15px;
+  cursor: pointer;
+  p {
+    transition: .3s;
+    user-select: none;
+    font-size: 20px;
+    text-align: center;
+    color: rgb(128, 127, 127);
+  }
+  &:hover {
+   p {
+     color: #ffffff;
+   }
+  }
+}
+
+.drag_drop_true {
+  background: rgba(255, 255, 255, 0.37) !important;
+  border: dashed 2px #ffffff;
+  p {
+    color: #ffffff;
+  }
+}
+
+.create_post_button {
+  width: 100%;
+  padding: 4px;
+  font-size: 20px;
+  transition: .3s;
+  background: #61dafb;
+  &:hover {
+  background: #8774e1;
+    color: #68ff97;
+  }
 }

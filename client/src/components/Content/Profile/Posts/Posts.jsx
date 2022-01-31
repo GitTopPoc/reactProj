@@ -103,7 +103,7 @@ const Posts = (props) => {
                 <p className={style.my_posts_heading}>Posts</p>
                 {props.profilePage.profile.userId === props.auth.userId && <AddPostForm {...props}/>}
             </div>
-            <Post auth={props.auth} deletePost={props.deletePost} likePost={props.likePost}
+            <Post setEdit={props.setEdit} editPost={props.editPost} auth={props.auth} deletePost={props.deletePost} likePost={props.likePost}
                   profilePage={props.profilePage}/>
         </div>
     </div>

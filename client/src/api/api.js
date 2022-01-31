@@ -62,12 +62,12 @@ export const profileAPI = {
         })
     },
     likePost(postId, userId) {
-        return instance.post('/posts/like', {postId, userId}).then(response => {
+        return instance.post('posts/like', {postId, userId}).then(response => {
             return response.data;
         })
     },
     deletePost(postId) {
-        return instance.post('/posts/delete', {postId}).then(response => {
+        return instance.post('posts/delete', {postId}).then(response => {
             return response.data;
         })
     },
@@ -80,6 +80,13 @@ export const profileAPI = {
     updateProfile(newData) {
         return instance.patch(`profile/update-profile`, {newData}).then(response => {
             return response.data;
+        })
+    },
+    updatePost(formData) {
+        return axios.patch(`${API_URL}api/posts/update-post`, formData,
+            {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}}
+        ).then(response => {
+            return response.data
         })
     },
     updateAvatar(file) {

@@ -6,7 +6,6 @@ const authMiddleware = require("../middleware/auth.middleware")
 const fileController = require("../controllers/fileController");
 
 
-
 router.post('/add-post', authMiddleware, fileController.addPost)
 
 
@@ -14,7 +13,7 @@ router.get('/:userId', authMiddleware,
     async (req, res) => {
         try {
             const user = await User.findById(req.params.userId)
-            let posts = await Post.find({'authorId': `${user.id}`}).sort({_id:-1});
+            let posts = await Post.find({'authorId': `${user.id}`}).sort({_id: -1});
             let newPosts = [];
             let check = {}
 
@@ -33,7 +32,7 @@ router.get('/:userId', authMiddleware,
                 check["likedBy"] = post.likedBy;
                 check["liked"] = false;
                 check["likesCount"] = post.likesCount;
-                check["id"]= post.id;
+                check["id"] = post.id;
 
                 post.likedBy.map(m => {
                     if (m === req.user.id) {
@@ -95,6 +94,8 @@ router.post('/delete', authMiddleware, async (req, res) => {
     }
 })
 
+
+router.patch('/update-post', authMiddleware, fileController.updatePost)
 
 
 

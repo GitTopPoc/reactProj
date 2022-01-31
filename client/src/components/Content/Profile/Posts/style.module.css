@@ -56,6 +56,10 @@
   font-size: 20px;
   text-align: center;
   color: #807f7f;
+  transition: 0.3s;
+}
+.drag_drop_block:hover p {
+  color: #ffffff;
 }
 
 .drag_drop_true {

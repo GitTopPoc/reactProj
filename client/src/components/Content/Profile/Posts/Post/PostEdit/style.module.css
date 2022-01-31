@@ -1,5 +1,84 @@
 .invisible {
-  display: none;
+  display: none !important;
+}
+
+.inline {
+  display: inline-flex;
+}
+
+.post_photo {
+  border: solid 2px #ffffff;
+  padding: 4px 10px;
+  max-width: 284px;
+  display: flex;
+  margin: 4px 0;
+}
+.post_photo p {
+  max-width: 270px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 18px;
+  line-height: 25px;
+  color: #ffffff;
+}
+
+.remove_photo_icon {
+  color: #61dafb;
+  font-size: 20px;
+  transition: 0.3s;
+  cursor: pointer;
+  margin: 2px 0 0 10px;
+}
+.remove_photo_icon:hover {
+  color: #8774e1;
+}
+
+.post_text {
+  margin: 10px 0 0 0;
+  color: #efe1ce;
+  width: 100%;
+  font-size: 20px;
+  min-height: 90px;
+  padding: 0 4px;
+  background: #4a4a4a;
+  resize: none;
+}
+
+.drag_drop_block {
+  background: rgba(128, 127, 127, 0.37);
+  padding: 30px 15px;
+  cursor: pointer;
+}
+.drag_drop_block p {
+  transition: 0.3s;
+  user-select: none;
+  font-size: 20px;
+  text-align: center;
+  color: #807f7f;
+}
+.drag_drop_block:hover p {
+  color: #ffffff;
+}
+
+.drag_drop_true {
+  background: rgba(255, 255, 255, 0.37) !important;
+  border: dashed 2px #ffffff;
+}
+.drag_drop_true p {
+  color: #ffffff;
+}
+
+.create_post_button {
+  width: 100%;
+  padding: 4px;
+  font-size: 20px;
+  transition: 0.3s;
+  background: #61dafb;
+}
+.create_post_button:hover {
+  background: #8774e1;
+  color: #68ff97;
 }
 
 /*# sourceMappingURL=style.module.css.map */

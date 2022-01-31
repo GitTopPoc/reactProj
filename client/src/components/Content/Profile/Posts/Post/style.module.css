@@ -141,7 +141,12 @@
   min-height: 140px;
   font-size: 20px;
   max-height: 140px;
-  padding: 4px 14px;
+  padding: 10px 0;
+}
+
+.post_date {
+  font-size: 20px;
+  padding: 2px 0 0 0;
 }
 
 /*# sourceMappingURL=style.module.css.map */

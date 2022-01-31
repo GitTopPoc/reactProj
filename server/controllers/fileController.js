@@ -112,6 +112,26 @@ class FileController {
         }
     }
 
+    async updatePost(req, res) {
+        try {
+            const text = req.body.text;
+            const post = await Post.findById(req.body.id)
+            if(req.files) {
+                const file = req.files.photo
+                const avatarName = Uuid.v4() + ".jpeg"
+                await file.mv(config.get('staticPath') + "\\" + avatarName)
+                post.photo = avatarName;
+            }
+            post.text = text;
+            await post.save()
+            return res.status(200).json({
+                resultCode: "0"
+            })
+        } catch (e) {
+            return res.status(400).json({message: `${e}`})
+        }
+    }
+
 }
 
 module.exports = new FileController()
