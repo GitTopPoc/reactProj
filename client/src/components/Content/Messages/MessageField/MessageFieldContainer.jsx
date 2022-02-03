@@ -1,26 +1,18 @@
-import {addMessageAction} from "../../../../redux/messages-reducer";
+import {addMessage} from "../../../../redux/messages-reducer";
 import MessageField from "./MessageField";
 import {connect} from "react-redux";
 import {getStateMessageData} from "../../../../redux/messages-selector";
 
 
-let mapStateToProps = (state) => {
-    return {
-       messageData: () => {
-
-           return getStateMessageData(state);
-
-       }
-    }
+let MessageFieldData = (props) => {
+    return(
+        <MessageField addMessage={props.addMessage} messageData={props.messageData}/>
+    )
 }
 
-let mapDispatchtoProps = (dispatch) => {
-    return {
-        addMessage: (text) => {
-            let action = addMessageAction(text);
-            dispatch(action);
-        }
-    }
-}
-const MessageFieldContainer = connect (mapStateToProps, mapDispatchtoProps) (MessageField)
-export default MessageFieldContainer;
+let mapStateToProps = (state) => ({
+    messageData : getStateMessageData(state)
+});
+
+
+export default connect (mapStateToProps, {addMessage}) (MessageFieldData);

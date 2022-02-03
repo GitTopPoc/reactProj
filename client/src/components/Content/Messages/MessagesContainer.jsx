@@ -4,11 +4,9 @@ import {compose} from "redux";
 import Messages from "./Messages";
 import {connect} from "react-redux";
 import {getStateDialogsData, getStateMessageData} from "../../../redux/messages-selector";
+
+
 class MessagesContainer extends React.Component {
-    componentDidMount() {
-
-    }
-
     render() {
         return (
             <Messages {...this.props} profile={this.props.profile}/>

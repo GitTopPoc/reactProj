@@ -34,6 +34,6 @@ const messagesReducer = (state = initialState, action) => {
             return state;
     }
 };
-export const addMessageAction = (text) => ({type: ADD_MESSAGE, text: text});
+export const addMessage = (text) => ({type: ADD_MESSAGE, text: text});
 
 export default messagesReducer;
