@@ -33,7 +33,6 @@ aside {
 
 html,
 body {
-  height: 100%;
   width: 100%;
   font-size: 100%;
   line-height: 1;
@@ -96,8 +95,8 @@ h6 {
 
 .block_container {
   margin: 0 auto;
-  max-width: 100%;
-  width: 1200px;
+  width: 100%;
+  max-width: 1200px;
 }
 
 ::-webkit-scrollbar {

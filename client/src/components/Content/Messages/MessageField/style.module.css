@@ -1,3 +1,7 @@
+.messages_container_wrapper {
+  background: #3a3a3a;
+}
+
 .input_field {
   max-width: 80%;
   margin: 0 auto;
@@ -24,16 +28,16 @@
   width: 100%;
   font-size: 20px;
   margin-top: -1px;
-  background-color: #61dafb;
-  color: #fff;
+  background-color: #8774e1;
+  color: #ffffff;
   padding: 4px;
   transition: 0.3s;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
 }
 .button:hover {
-  background-color: #8774e1;
-  color: #66ff97;
+  background-color: #61dafb;
+  color: black;
 }
 .button:active {
   background-color: #66ff97;
@@ -50,7 +54,7 @@
 
 .auth_user_message {
   margin-left: auto !important;
-  background: #8774e1;
+  background: #61dafb;
   max-width: 60%;
   width: fit-content;
   padding: 6px 14px;
@@ -69,6 +73,20 @@
   color: #fff;
   border-radius: 16px;
   margin: 2px 0;
+}
+.message p {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.dialog_header {
+  background: #8774e1;
+  height: 40px;
+  padding: 10px 0;
+}
+.dialog_header p {
+  color: #ffffff;
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.module.css.map */

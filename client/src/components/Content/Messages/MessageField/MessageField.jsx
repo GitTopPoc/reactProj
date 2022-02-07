@@ -5,8 +5,6 @@ import {useForm} from "react-hook-form";
 
 
 const Messages = (props) => {
-
-
     // MESSAGE
     const Message = (props) => {
         return (
@@ -61,12 +59,15 @@ export const SendMessageForm = (props) => {
 
 const MessageField = (props) => {
     return (
-        <div className={`${ms.block_container}`}>
-            <Messages messageData={props.messageData}/>
-            <div className={style.input_field}>
-                <SendMessageForm addMessage={props.addMessage}/>
-            </div>
-        </div>
+           <div className={`${ms.block_container} ${style.messages_container_wrapper}`}>
+               <div className={style.dialog_header}>
+                   <p>Dialog header</p>
+               </div>
+               <Messages messageData={props.messageData}/>
+               <div className={style.input_field}>
+                   <SendMessageForm addMessage={props.addMessage}/>
+               </div>
+           </div>
     )
 
 

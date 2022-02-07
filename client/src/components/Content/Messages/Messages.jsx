@@ -5,6 +5,8 @@ import Dialogs from "./Dialogs/Dialogs";
 import MessageFieldContainer from "./MessageField/MessageFieldContainer";
 
 const Messages = (props) => {
+
+
     return(
         <div className={ms.block_container}>
         <div className={style.message_wrapper}>

@@ -32,3 +32,44 @@
   width: 100%;
   border-right: solid 2px gray;
 }
+.hide_dialogs {
+  max-width: 40px;
+  height: 100%;
+  background: #8774e1;
+  border: none;
+}
+
+.dialogs_menu {
+  height: 40px;
+  background: #8774e1;
+}
+
+.show_hide_button {
+  font-size: 20px;
+  float: right;
+  margin: 6px;
+  background: none;
+  color: #ffffff;
+}
+.show_button {
+  transition: .3s;
+  padding: 0 6px;
+  &:hover {
+    background: rgba(255,255,255,0.4);
+    color: #66ff97;
+  }
+}
+
+.hide_button {
+  padding: 0 8px 0 6px;
+  transition: .3s;
+  border-radius: 50%;
+  &:hover {
+    background: rgba(255,255,255,0.4);
+    color: #66ff97;
+  }
+}
+
+.invisible {
+  display: none;
+}
