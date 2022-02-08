@@ -15,7 +15,7 @@ router.get('/:userId', authMiddleware,
             const user = await User.findById(req.params.userId)
             let posts = await Post.find({'authorId': `${user.id}`}).sort({_id: -1});
             let newPosts = [];
-            let check = {}
+            let newPost = {}
 
             if (!user) {
                 return res.statusCode(404).json({
@@ -23,24 +23,24 @@ router.get('/:userId', authMiddleware,
                 })
             }
             posts.map(post => {
-                check = {};
-                check["authorId"] = post.authorId;
-                check["text"] = post.text;
-                check["time"] = post.time;
-                check["date"] = post.date;
-                check["photo"] = post.photo;
-                check["likedBy"] = post.likedBy;
-                check["liked"] = false;
-                check["likesCount"] = post.likesCount;
-                check["id"] = post.id;
+                newPost = {};
+                newPost["authorId"] = post.authorId;
+                newPost["text"] = post.text;
+                newPost["time"] = post.time;
+                newPost["date"] = post.date;
+                newPost["photo"] = post.photo;
+                newPost["likedBy"] = post.likedBy;
+                newPost["liked"] = false;
+                newPost["likesCount"] = post.likesCount;
+                newPost["id"] = post.id;
 
-                post.likedBy.map(m => {
+                newPost.likedBy.map(m => {
                     if (m === req.user.id) {
 
-                        check["liked"] = true
+                        newPost["liked"] = true
                     }
                 })
-                newPosts.push(check)
+                newPosts.push(newPost)
             })
             return res.json({
                 resultCode: "0",

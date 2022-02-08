@@ -8,8 +8,7 @@ const Messages = (props) => {
     // MESSAGE
     const Message = (props) => {
         return (
-            <div
-                className={`${style.message}`}>
+            <div className={`${style.message}`}>
                 <div
                     className={`${style.message} ${props.id % 2 ? style.auth_user_message : style.dialog_user_message}`}>
                     <p className={ms.regular_text}>{props.message}</p>
@@ -49,7 +48,9 @@ export const SendMessageForm = (props) => {
         <form onSubmit={handleSubmit((data) => {
             formSubmit(data, props.addMessage)
         })}>
-            <textarea onKeyPress={(e) => {handleKeyPress(e, props.addMessage)}} {...register("newMessageText")} className={style.input_field_text}
+            <textarea onKeyPress={(e) => {
+                handleKeyPress(e, props.addMessage)
+            }} {...register("newMessageText")} className={style.input_field_text}
                       name={'newMessageText'} placeholder={'Enter new message'}/>
             <button type={"submit"} className={style.button}>Send</button>
         </form>
@@ -59,15 +60,15 @@ export const SendMessageForm = (props) => {
 
 const MessageField = (props) => {
     return (
-           <div className={`${ms.block_container} ${style.messages_container_wrapper}`}>
-               <div className={style.dialog_header}>
-                   <p>Dialog header</p>
-               </div>
-               <Messages messageData={props.messageData}/>
-               <div className={style.input_field}>
-                   <SendMessageForm addMessage={props.addMessage}/>
-               </div>
-           </div>
+        <div className={`${ms.block_container} ${style.messages_container_wrapper}`}>
+            <div className={style.dialog_header}>
+                <p>Dialog header</p>
+            </div>
+            <Messages messageData={props.messageData}/>
+            <div className={style.input_field}>
+                <SendMessageForm addMessage={props.addMessage}/>
+            </div>
+        </div>
     )
 
 

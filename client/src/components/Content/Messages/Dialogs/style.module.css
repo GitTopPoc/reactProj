@@ -1,25 +1,40 @@
-.dialog {
-  font-size: 20px;
-  padding: 10px;
-  border-radius: 8px;
-}
-
 .dialog_wrapper {
   width: 100%;
   max-width: 200px;
+  transition: 0.3s;
 }
 .dialog_wrapper:hover {
   cursor: pointer;
-  background-color: #696868;
+  background: rgba(255, 255, 255, 0.19);
 }
 
 .active .dialog {
-  background-color: #61dafb;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.dialog_description {
+  padding: 4px 0 0 6px;
 }
 
 .dialog_name {
-  color: #fff;
   text-decoration: none;
+  font-weight: 600;
+  color: #ffffff;
+  width: 130px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.last_message {
+  text-decoration: none;
+  font-size: 13px;
+  margin-top: 6px;
+  width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #b7b7b7;
 }
 
 .dialogs_list {
@@ -69,6 +84,20 @@
 
 .invisible {
   display: none;
+}
+
+.dialog_photo {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.dialog {
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
 }
 
 /*# sourceMappingURL=style.module.css.map */

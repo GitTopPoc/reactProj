@@ -4,7 +4,7 @@
 
 .input_field {
   max-width: 80%;
-  margin: 0 auto;
+  margin: 2px auto;
   padding: 10px;
 }
 
@@ -45,8 +45,8 @@
 }
 
 .messages {
+  height: 50vh;
   padding: 10px;
-  height: 400px;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;

@@ -1,4 +1,8 @@
+import {dialogsAPI} from "../api/api";
+
+
 const ADD_MESSAGE = 'ADD-MESSAGE';
+const SET_DIALOGS = 'SET_DIALOGS';
 
 
 let initialState = {
@@ -9,11 +13,7 @@ let initialState = {
         {id: 4, message: 'XXX'}
     ],
     dialogsData: [
-        {id: 1, name: 'User1'},
-        {id: 2, name: 'User2'},
-        {id: 3, name: 'User3'},
-        {id: 4, name: 'User4'},
-        {id: 5, name: 'User5'},
+
     ]
 }
 
@@ -29,11 +29,27 @@ const messagesReducer = (state = initialState, action) => {
             stateCopy.messageData = [...state.messageData];
             stateCopy.messageData.push(newMessage);
             return stateCopy;
+
+        case SET_DIALOGS : {
+            return {...state, dialogsData: action.dialogsData}
+        }
         default:
 
             return state;
     }
 };
 export const addMessage = (text) => ({type: ADD_MESSAGE, text: text});
+export const setDialogs = (data) => ({type: SET_DIALOGS, dialogsData: data.dialogs});
+
+export const getDialog = () => {
+    return (dispatch) => {
+        dialogsAPI.getDialogs().then(data => {
+            if (data.resultCode === 0) {
+                    dispatch(setDialogs(data));
+
+            }
+        })
+    }
+}
 
 export default messagesReducer;

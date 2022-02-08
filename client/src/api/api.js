@@ -113,4 +113,13 @@ export const profileAPI = {
     }
 }
 
+export const dialogsAPI = {
+    getDialogs() {
+        return instance.get(`dialogs/`).then(response => {
+            return response.data;
+        })
+    },
+
+}
+
 
