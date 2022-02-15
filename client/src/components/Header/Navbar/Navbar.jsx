@@ -11,7 +11,7 @@ const Navbar = (props) => {
            <div className={`${style.header_links_block} `}>
                <ul>
                    <li><NavLink activeClassName={style.active} to={'/profile/' + props.state.auth.userId}><p className={ms.regular_text}>Profile</p></NavLink></li>
-                   {props.isAuth && <li><NavLink activeClassName={style.active} to="/messages/none"><p className={ms.regular_text}>Messages</p></NavLink></li>}
+                   {props.isAuth && <li><NavLink activeClassName={style.active} to="/messages"><p className={ms.regular_text}>Messages</p></NavLink></li>}
                    <li><NavLink activeClassName={style.active} to="/users"><p className={ms.regular_text}>Users</p></NavLink></li>
                    <li><NavLink activeClassName={style.active} to="/News"><p className={ms.regular_text}>News</p></NavLink></li>
                    {props.isAuth && <li><NavLink activeClassName={style.active} to="/settings"><p className={ms.regular_text}>Settings</p></NavLink></li>}

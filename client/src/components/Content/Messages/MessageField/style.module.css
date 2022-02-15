@@ -1,9 +1,13 @@
 .messages_container_wrapper {
   background: #3a3a3a;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: 90vh;
 }
 
 .input_field {
-  max-width: 80%;
+  width: 80%;
   margin: 2px auto;
   padding: 10px;
 }
@@ -45,7 +49,7 @@
 }
 
 .messages {
-  height: 50vh;
+  height: 70vh;
   padding: 10px;
   overflow-y: scroll;
   display: flex;
@@ -81,12 +85,16 @@
 
 .dialog_header {
   background: #8774e1;
-  height: 40px;
+  min-height: 40px;
   padding: 10px 0;
 }
 .dialog_header p {
   color: #ffffff;
   text-align: center;
+}
+
+.invisible {
+  display: none;
 }
 
 /*# sourceMappingURL=style.module.css.map */

@@ -27,7 +27,8 @@ const Content = (props) => {
            <div className={ms.block_container}>
                <div className={style.content_blocks}>
                    <Route path={'/profile/:userId'} render={() => <ProfileContainer/>}/>
-                   <Route path={'/messages/:dialogId'} render={() => <MessagesContainer/>}/>
+                   <Route path={`/messages/:dialogId`} render={() => <MessagesContainer/>}/>
+                   <Route exact path={`/messages`} render={() => <MessagesContainer/>}/>
                    <Route path='/users' render={() => <UsersContainer/>}/>
                    <Route path='/settings' render={() => <SettingsContainer/>}/>
                </div>

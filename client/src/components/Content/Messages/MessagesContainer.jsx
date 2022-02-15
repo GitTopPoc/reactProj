@@ -6,16 +6,17 @@ import {getStateDialogsData, getStateMessageData} from "../../../redux/messages-
 import Preloader from "../../common/Preloader/Preloader";
 import {getStateIsAuth} from "../../../redux/auth-selector";
 import {withRouter} from "react-router-dom";
-import {getMessages} from "../../../redux/messages-reducer";
+import {getMessages, setMessages} from "../../../redux/messages-reducer";
 
 
 const MessagesContainer = (props) => {
 
     const {location} = window;
     useEffect(() => {
-
-        if (props.match.params.dialogId !== "none") {
+        if(props.match.params.dialogId){
             props.getMessages(props.match.params.dialogId)
+        } else {
+            props.setMessages([])
         }
 // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location.href])
@@ -42,5 +43,5 @@ let mapStateToProps = (state) => ({
 
 export default compose(
     withRouter,
-    connect(mapStateToProps, {getMessages})
+    connect(mapStateToProps, {getMessages, setMessages})
 )(MessagesContainer)

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef} from "react";
 import style from "./style.module.css";
 import ms from "../../../../mainStyles/ms.module.css";
 import {useForm} from "react-hook-form";
@@ -18,7 +18,8 @@ const Messages = (props) => {
     }
 
     // MAP MESSAGES
-    let messages = props.messageData.map(m => <Message authUser={props.authUser} id={m.authorId} message={m.text}/>)
+
+    let messages = props.messageData.map(m => <Message key={m._id} authUser={props.authUser} id={m.authorId} message={m.text}/>)
     return (<div className={style.messages}>
             {messages}
         </div>
@@ -28,9 +29,11 @@ const Messages = (props) => {
 
 export const SendMessageForm = (props) => {
     const {register, handleSubmit} = useForm();
+    const formRef = useRef();
 
     let formSubmit = (data, currentDialog, sendMessage) => {
         sendMessage(currentDialog, data.newMessageText);
+        formRef.current.reset();
     }
 
     let handleKeyPress = (e, currentDialog) => {
@@ -45,9 +48,10 @@ export const SendMessageForm = (props) => {
     }
 
     return <>
-        <form onSubmit={handleSubmit((data) => {
-            formSubmit(data, props.currentDialog, props.sendMessage);
-        })}>
+        <form ref={formRef} className={`${style.message_form} ${props.currentDialog === undefined && style.invisible}`}
+              onSubmit={handleSubmit((data) => {
+                  formSubmit(data, props.currentDialog, props.sendMessage);
+              })}>
             <textarea onKeyPress={(e) => {
                 handleKeyPress(e, props.currentDialog, props.sendMessage)
             }} {...register("newMessageText")} className={style.input_field_text}
@@ -64,7 +68,7 @@ const MessageField = (props) => {
             <div className={style.dialog_header}>
                 <p>Dialog header</p>
             </div>
-            <Messages authUser={props.authUser} messageData={props.messageData}/>
+            {props.messageData && <Messages authUser={props.authUser} messageData={props.messageData}/>}
             <div className={style.input_field}>
                 <SendMessageForm currentDialog={props.currentDialog.params.dialogId} sendMessage={props.sendMessage}/>
             </div>
