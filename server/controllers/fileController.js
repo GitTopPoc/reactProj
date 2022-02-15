@@ -48,11 +48,11 @@ class FileController {
             const postText = req.body.text;
             const user = await User.findById(req.user.id)
             let Data = new Date();
-            let Month = Data.getMonth();
+            let Month = Data.getMonth() + 1;
             let Day = Data.getDate();
             let Hour = Data.getHours();
             let Minutes = Data.getMinutes();
-            let postDate = Day + "." + Month + 1;
+            let postDate = Day + "." + Month;
             let postTime = Hour + ":" + Minutes;
             let photo = "none";
 

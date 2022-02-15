@@ -11,7 +11,7 @@ const Messages = (props) => {
         <div className={ms.block_container}>
         <div className={style.message_wrapper}>
             <DialogsContainer dialogsData={props.dialogsData}/>
-            <MessageFieldContainer messageData={props.messageData} dispatch={props.dispatch}/>
+            <MessageFieldContainer currentDialog={props.match} messageData={props.messageData} dispatch={props.dispatch}/>
         </div>
         </div>
     )

@@ -23,7 +23,7 @@ const Dialogs = (props) => {
                 <button onClick={() => {setShowDialogs(!showDialogs)}} className={`${showDialogs && style.invisible} ${style.show_hide_button} ${style.show_button}`}> <FontAwesomeIcon icon={faBars}/></button>
                 <button onClick={() => {setShowDialogs(!showDialogs)}} className={` ${!showDialogs && style.invisible} ${style.show_hide_button} ${style.hide_button}`}> <FontAwesomeIcon icon={faChevronLeft}/></button>
             </div>
-            <div className={`${style.dialogs} ${!showDialogs && style.invisible}`}>
+            <div className={`${!showDialogs && style.invisible}`}>
                 {dialogs}
             </div>
         </div>
@@ -31,9 +31,8 @@ const Dialogs = (props) => {
 }
 
 const DialogItem = (props) => {
-    let path = "/messages/" + props.id;
     return (
-        <NavLink activeClassName={style.active} to={path}>
+        <NavLink activeClassName={style.active} to={"/messages/" + props.id}>
             <div className={style.dialog_wrapper}>
                 <div className={style.dialog}>
                     <div>

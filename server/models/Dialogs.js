@@ -6,9 +6,9 @@ const Dialogs = new Schema ({
     lastMessage:{type: String},
     messages: [{
         authorId: {type: String, required: true},
-        date:{type: String, required: true},
-        time: {type: String, required: true},
-        text: {type: String , required: true},
+        date:{type: String},
+        time: {type: String},
+        text: {type: String},
         photo: {type: String},
         sent: {type: Boolean},
         read: {type: Boolean}
