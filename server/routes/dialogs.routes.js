@@ -141,10 +141,6 @@ router.get('/get-message', authMiddleware, async (req, res) => {
                 messageData.unshift(dialog.messages[i])
             }
         }
-
-
-
-
         return res.status(200).json({
             resultCode: 0,
             messageData

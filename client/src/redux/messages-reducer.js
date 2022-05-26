@@ -3,11 +3,14 @@ import {dialogsAPI} from "../api/api";
 
 const SET_DIALOGS = 'SET_DIALOGS';
 const SET_MESSAGES = 'SET_MESSAGES';
+const SET_MESSAGES_LOAGING = 'SET_MESSAGES_LOAGING';
 
 
 let initialState = {
+    messageLoading: false,
     messageData: [],
     dialogsData: []
+
 }
 
 const messagesReducer = (state = initialState, action) => {
@@ -20,6 +23,9 @@ const messagesReducer = (state = initialState, action) => {
         case SET_MESSAGES : {
             return {...state, messageData: action.messageData}
         }
+        case SET_MESSAGES_LOAGING : {
+            return {...state, messageLoading: !state.messageLoading}
+        }
         default:
 
             return state;
@@ -27,6 +33,7 @@ const messagesReducer = (state = initialState, action) => {
 };
 export const setDialogs = (data) => ({type: SET_DIALOGS, dialogsData: data.dialogs});
 export const setMessages = (data) => ({type: SET_MESSAGES, messageData: data.messageData});
+export const setMessagesLoading = () => ({type: SET_MESSAGES});
 
 export const sendMessage = (dialogId, text) => {
     return () => {

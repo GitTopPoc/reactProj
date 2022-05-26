@@ -11,6 +11,7 @@ const fileUpload = require("express-fileupload")
 const corsMiddleware = require("./middleware/cors.middleware")
 const PORT = config.get('serverPort')
 
+
 app.use(fileUpload({}))
 app.use(corsMiddleware)
 app.use(express.json())
@@ -21,7 +22,7 @@ app.use("/api/posts", postRoutes)
 app.use("/api/dialogs", dialogsRoutes)
 app.use(express.static('static'))
 
-const start =  async () =>{
+const start = async () => {
     try {
         console.log("Server starting...")
         await mongoose.connect(config.get("dbUrl"), {useNewUrlParser: true, useUnifiedTopology: true})
@@ -29,9 +30,7 @@ const start =  async () =>{
         app.listen(PORT, () => {
             console.log("Server started on port: ", PORT)
         })
-
-    }
-    catch (e) {
+    } catch (e) {
 
     }
 }

@@ -1,10 +1,30 @@
-import React, {useRef} from "react";
+import React, {useEffect, useRef} from "react";
 import style from "./style.module.css";
 import ms from "../../../../mainStyles/ms.module.css";
 import {useForm} from "react-hook-form";
 
 
 const Messages = (props) => {
+
+    let scrollBotRef = useRef();
+    let scrollTopRef = useRef();
+    const observer = useRef();
+    useEffect(() => {
+        if (props.messageData.length < 21) {
+            scrollBotRef.current?.scrollIntoView();
+        }
+    }, [props.messageData])
+
+    useEffect(() => {
+        let callback = (entries, /*observer*/) =>{
+            if(entries[0].isIntersecting) {
+                alert("scrolled to top")
+            }
+        }
+        observer.current = new IntersectionObserver(callback);
+        observer.current.observe(scrollTopRef.current)
+    }, [])
+
     // MESSAGE
     const Message = (props) => {
         return (
@@ -19,9 +39,12 @@ const Messages = (props) => {
 
     // MAP MESSAGES
 
-    let messages = props.messageData.map(m => <Message key={m._id} authUser={props.authUser} id={m.authorId} message={m.text}/>)
-    return (<div className={style.messages}>
+    let messages = props.messageData.map(m => <Message key={m._id} authUser={props.authUser} id={m.authorId}
+                                                       message={m.text}/>)
+    return (<div className={`${style.messages}`}>
+            <div ref={scrollTopRef} style={{height: 20, background:'red'}}>top scroll </div>
             {messages}
+            <div ref={scrollBotRef}/>
         </div>
     )
 }
@@ -63,6 +86,8 @@ export const SendMessageForm = (props) => {
 
 
 const MessageField = (props) => {
+
+
     return (
         <div className={`${ms.block_container} ${style.messages_container_wrapper}`}>
             <div className={style.dialog_header}>
