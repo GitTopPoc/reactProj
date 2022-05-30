@@ -119,8 +119,8 @@ export const dialogsAPI = {
             return response.data;
         })
     },
-    getMessages(dialogId) {
-        return instance.get(`dialogs/get-message?dialogId=${dialogId}`).then(response => {
+    getMessages(dialogId, page) {
+        return instance.get(`dialogs/get-message?dialogId=${dialogId}&page=${page}`).then(response => {
             return response.data;
         })
     },

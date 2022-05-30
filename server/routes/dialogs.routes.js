@@ -4,7 +4,6 @@ const Dialogs = require("../models/Dialogs")
 const router = new Router()
 const authMiddleware = require("../middleware/auth.middleware")
 
-
 router.get('/', authMiddleware, async (req, res) => {
     try {
         const user = await User.findById(req.user.id)
@@ -126,25 +125,55 @@ router.get('/get-message', authMiddleware, async (req, res) => {
                 error: "Data not found"
             })
         }
-
         let limit = 20;
+        let currentPage = req.query.page;
+        let skip = 1;
         let messageData = [];
-
-
-        if (limit >= dialog.messages.length) {
+        let maxPages = Math.ceil(dialog.messages.length / limit);
+        if(req.query.page > maxPages) {
+            return res.status(404).json({
+                error: "Messages not found. Invalid page."
+            })
+        }
+        if (limit >= dialog.messages.length) { // if less than 20 messages in dialog
             limit = dialog.messages.length
             for(let j = 0; j < limit; j++) {
                 messageData.push(dialog.messages[j])
             }
         } else {
-            for (let i = dialog.messages.length - 1; i >= dialog.messages.length - limit; i--) {
-                messageData.unshift(dialog.messages[i])
+            if(currentPage < 2) { // set skip number
+                skip = 1;
+            } else {
+                skip = limit * (currentPage - 1);
+
+            }
+            for (let i = dialog.messages.length - skip; i > dialog.messages.length - (limit * currentPage); i--) { // skip to current page
+                if(dialog.messages[i] != null) {
+                    messageData.unshift(dialog.messages[i])
+                }
             }
         }
+      /* if(req.query.page > 1) {
+           const timer = setTimeout(() => {
+               return res.status(200).json({
+                   resultCode: 0,
+                   messageData,
+                   maxPages
+               })
+           }, 1000);
+       } else {
+           return res.status(200).json({
+               resultCode: 0,
+               messageData,
+               maxPages
+           })
+       }*/
         return res.status(200).json({
             resultCode: 0,
-            messageData
+            messageData,
+            maxPages
         })
+
     } catch (e) {
         return res.send({message: `${e}`})
     }

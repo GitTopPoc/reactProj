@@ -16,7 +16,7 @@ const Dialogs = (props) => {
     },[])
 
 
-    let dialogs = props.dialogsData.map(d => <DialogItem id={d.id} name={d.name} photo={d.photo} lastMessage={d.lastMessage}/>)
+    let dialogs = props.dialogsData.map(d => <DialogItem key={d.id} id={d.id} name={d.name} photo={d.photo} lastMessage={d.lastMessage}/>)
     return (
         <div className={`${style.dialogs_list} ${!showDialogs && style.hide_dialogs} ${ms.block_container}`}>
             <div className={style.dialogs_menu}>

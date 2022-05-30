@@ -5,25 +5,40 @@ import {useForm} from "react-hook-form";
 
 
 const Messages = (props) => {
-
     let scrollBotRef = useRef();
     let scrollTopRef = useRef();
     const observer = useRef();
     useEffect(() => {
-        if (props.messageData.length < 21) {
+        if (props.currentPage === 1 && props.messageData.length > 15) {
             scrollBotRef.current?.scrollIntoView();
+
         }
+        /* eslint-disable react-hooks/exhaustive-deps */
     }, [props.messageData])
 
     useEffect(() => {
+        if(observer.current) {
+            observer.current.disconnect();
+        }
         let callback = (entries, /*observer*/) =>{
-            if(entries[0].isIntersecting) {
-                alert("scrolled to top")
-            }
+                if(entries[0].isIntersecting) {
+                    if(props.currentPage < props.maxPages && props.messageLoading === false) {
+                        props.setCurrentPage(props.currentPage + 1)
+                        scrollBotRef.current?.scrollIntoView(10);
+                        }
+                }
         }
         observer.current = new IntersectionObserver(callback);
         observer.current.observe(scrollTopRef.current)
-    }, [])
+        /* eslint-disable react-hooks/exhaustive-deps */
+    }, [props.messageLoading])
+
+    useEffect(() => {
+           if(props.currentPage !== 1) {
+               props.getMessages(props.dialogId, (props.currentPage))
+           }
+        /* eslint-disable react-hooks/exhaustive-deps */
+    },[props.currentPage])
 
     // MESSAGE
     const Message = (props) => {
@@ -42,7 +57,7 @@ const Messages = (props) => {
     let messages = props.messageData.map(m => <Message key={m._id} authUser={props.authUser} id={m.authorId}
                                                        message={m.text}/>)
     return (<div className={`${style.messages}`}>
-            <div ref={scrollTopRef} style={{height: 20, background:'red'}}>top scroll </div>
+            <div ref={scrollTopRef}/>
             {messages}
             <div ref={scrollBotRef}/>
         </div>
@@ -86,14 +101,12 @@ export const SendMessageForm = (props) => {
 
 
 const MessageField = (props) => {
-
-
     return (
         <div className={`${ms.block_container} ${style.messages_container_wrapper}`}>
             <div className={style.dialog_header}>
                 <p>Dialog header</p>
             </div>
-            {props.messageData && <Messages authUser={props.authUser} messageData={props.messageData}/>}
+            {props.messageData && <Messages setCurrentPage={props.setCurrentPage} currentPage={props.currentPage} messageLoading={props.messageLoading} maxPages={props.maxPages} dialogId={props.currentDialog.params.dialogId} getMessages={props.getMessages} authUser={props.authUser} messageData={props.messageData}/>}
             <div className={style.input_field}>
                 <SendMessageForm currentDialog={props.currentDialog.params.dialogId} sendMessage={props.sendMessage}/>
             </div>
