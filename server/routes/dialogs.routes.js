@@ -14,7 +14,7 @@ router.get('/', authMiddleware, async (req, res) => {
             })
         }
 
-        let dialogs = await Dialogs.find({'usersId': `${user.id}`}).sort({_id: -1});
+        let dialogs = await Dialogs.find({'usersId': `${user.id}`}).sort({lastUpdate: -1});
         let newDialogs = [];
         let newDialog = {};
         let dialogPhoto = "";
@@ -54,7 +54,6 @@ router.get('/', authMiddleware, async (req, res) => {
 
 router.post('/add-dialog', authMiddleware, async (req, res) => {
     try {
-
         const dialogCreator = await User.findById(req.user.id)
         const user = await User.findById(req.body.userId)
 
@@ -64,13 +63,14 @@ router.post('/add-dialog', authMiddleware, async (req, res) => {
             })
         }
 
+        const currentDate = new Date()
+        let lastUpdate = currentDate.getTime();
         const usersId = [dialogCreator.id, user.id]
         const photo = ""
         const lastMessage = ""
         const messages = []
-        const dialog = new Dialogs({usersId, photo, lastMessage, messages})
+        const dialog = new Dialogs({usersId, photo, lastMessage, lastUpdate, messages})
         await dialog.save()
-
         return res.status(200).json({
             message: "Success"
         })
@@ -78,6 +78,7 @@ router.post('/add-dialog', authMiddleware, async (req, res) => {
         return res.send({message: `${e}`})
     }
 })
+
 
 router.post('/post-message', authMiddleware, async (req, res) => {
     try {
@@ -90,6 +91,7 @@ router.post('/post-message', authMiddleware, async (req, res) => {
         }
 
         let Data = new Date();
+        const lastUpdate = Data.getTime();
         let Month = Data.getMonth() + 1;
         let Day = Data.getDate();
         let Hour = Data.getHours();
@@ -105,8 +107,9 @@ router.post('/post-message', authMiddleware, async (req, res) => {
         const read = false;
 
         dialog.messages.push({authorId, date, time, text, photo, sent, read})
+        dialog.lastMessage = text;
+        dialog.lastUpdate = lastUpdate;
         await dialog.save()
-
 
         return res.status(200).json({
             resultCode: 0
@@ -130,44 +133,29 @@ router.get('/get-message', authMiddleware, async (req, res) => {
         let skip = 1;
         let messageData = [];
         let maxPages = Math.ceil(dialog.messages.length / limit);
-        if(req.query.page > maxPages) {
+        if (req.query.page > maxPages) {
             return res.status(404).json({
                 error: "Messages not found. Invalid page."
             })
         }
         if (limit >= dialog.messages.length) { // if less than 20 messages in dialog
             limit = dialog.messages.length
-            for(let j = 0; j < limit; j++) {
+            for (let j = 0; j < limit; j++) {
                 messageData.push(dialog.messages[j])
             }
         } else {
-            if(currentPage < 2) { // set skip number
+            if (currentPage < 2) { // set skip number
                 skip = 1;
             } else {
                 skip = limit * (currentPage - 1);
 
             }
             for (let i = dialog.messages.length - skip; i > dialog.messages.length - (limit * currentPage); i--) { // skip to current page
-                if(dialog.messages[i] != null) {
+                if (dialog.messages[i] != null) {
                     messageData.unshift(dialog.messages[i])
                 }
             }
         }
-      /* if(req.query.page > 1) {
-           const timer = setTimeout(() => {
-               return res.status(200).json({
-                   resultCode: 0,
-                   messageData,
-                   maxPages
-               })
-           }, 1000);
-       } else {
-           return res.status(200).json({
-               resultCode: 0,
-               messageData,
-               maxPages
-           })
-       }*/
         return res.status(200).json({
             resultCode: 0,
             messageData,

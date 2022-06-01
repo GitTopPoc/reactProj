@@ -4,6 +4,7 @@ const Dialogs = new Schema ({
     usersId:[{type:String, required: true}],
     photo:{type: String},
     lastMessage:{type: String},
+    lastUpdate:{type: String},
     messages: [{
         authorId: {type: String, required: true},
         date:{type: String},
